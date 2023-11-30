@@ -41,6 +41,24 @@ def extract_text_between_markers(pdf_text, start_marker, end_marker, start_icbc_
             
     return final_extracted_text
 
+def extract_information(text):
+    # Define patterns for name, age, and gender
+    name_pattern = re.compile(r'\[-name-\](.*?)\.')
+    age_pattern = re.compile(r'\[-age-\](.*?)\.')
+    gender_pattern = re.compile(r'\[-gender-\](.*?)\.')
+
+    # Use findall to get all matches for each pattern
+    names = re.findall(name_pattern, text)
+    ages = re.findall(age_pattern, text)
+    genders = re.findall(gender_pattern, text)
+
+    # Return the extracted information
+    return (
+        names[0].strip() if names else None,
+        ages[0].strip() if ages else None,
+        genders[0].strip() if genders else None
+    )
+
 def get_summary_text(text):
     result = re.search(r'^(.*?)Past medical', text, re.DOTALL | re.MULTILINE)
     
