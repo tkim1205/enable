@@ -24,7 +24,7 @@ def main():
                 with st.spinner('Running...'):
                     pdf_text = util.extract_text_from_pdf(pdf_file) 
                     text_between_markers = util.extract_text_between_markers(pdf_text, enable_start, enable_end, icbc_start, icbc_end)
-                    name, age, gender = extract_information(pdf_text)
+                    name, age, gender = util.extract_information(pdf_text)
                     summary_text = util.get_summary_text(text_between_markers)
                     past_medical_text = util.get_past_medical_text(text_between_markers)
                     chatgpt_prompt = prompt_template + summary_text
