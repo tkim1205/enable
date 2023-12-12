@@ -56,7 +56,9 @@ def main():
                 if debug_text_between_markers:
                     st.write(text_between_markers)
                 if debug_personal_info:
-                    st.write("Name:", name, "\nAge:", age, "\nGender:", gender)
+                    st.write("Name:", name
+                    st.write("Age:", age)
+                    st.write("Gender:", gender)
                 if debug_summary_text:
                     st.write(summary_text)
                 if debug_past_medical_text:
