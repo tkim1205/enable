@@ -78,11 +78,10 @@ def get_past_medical_text(text):
     
     return extracted_text
 
-def call_chatgpt(prompt, api_key):
+def call_chatgpt(prompt, api_key, model):
     from openai import OpenAI
     
     client = OpenAI(api_key=api_key)
-    model = "gpt-3.5-turbo"
     
     messages=[
         {

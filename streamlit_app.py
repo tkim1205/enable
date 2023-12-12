@@ -17,6 +17,11 @@ def main():
     # Add space
     st.markdown('#')
 
+    # Model
+    model = st.selectbox(
+        'ChatGPT Model',
+        ('gpt-4', 'gpt-3.5-turbo'))
+
     # Prompt
     prompt_template = st.text_area(
         '**ChatGPT Prompt**',
@@ -66,7 +71,7 @@ def main():
                     chatgpt_prompt = prompt_template + "\n\nText:\n\n" + summary_text
 
                     if show_chatgpt_response:
-                        response = util.call_chatgpt(chatgpt_prompt, st.secrets["api_key"])
+                        response = util.call_chatgpt(chatgpt_prompt, st.secrets["api_key"], model)
 
                 # Done
                 st.success('Done!')
