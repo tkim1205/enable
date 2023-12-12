@@ -14,7 +14,7 @@ icbc_end = '[-icbc end-]'
 
 def main():
 
-    col1, mid, col2 = st.columns([1,1,20])
+    col1, col2 = st.columns(2)
     with col1:
         st.image('enable-logo.jpg')
     with col2:
