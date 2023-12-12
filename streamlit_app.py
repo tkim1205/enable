@@ -2,7 +2,7 @@
 import streamlit as st
 import util
 
-st.set_page_config(page_title="Rewordify", page_icon="🦄")
+st.set_page_config(page_title="enable rewordify", page_icon="🦄")
 
 # Variables
 prompt_template = """Every time I enter text, act as a consultant neurologist. Use the text to summarize the patient's presenting complaint in a professional manner that would be suitable to communicate to other physicians. Write in paragraphs. ONLY SUMMARIZE THE GIVEN INFORMATION. Do not indicate or suggest that further evaluation or investigation is needed."""
