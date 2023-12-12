@@ -69,28 +69,40 @@ def main():
 
                 # Done
                 st.success('Done!')
+                st.markdown('#')
 
                 # Debug
                 if show_raw_pdf_text:
                     st.write("**Raw PDF Text**")
                     st.write(pdf_text)
+                    st.markdown('#')
+
                 if show_text_between_markers:
                     st.write("**Text Between Markers**")
                     st.write(text_between_markers)
+                    st.markdown('#')
+
                 if show_personal_info:
                     st.write("**Personal Information**")
                     st.write("Name:", name)
                     st.write("Age:", age)
                     st.write("Gender:", gender)
+                    st.markdown('#')
+
                 if show_summary_text:
                     st.write("**Summary Text**")
                     st.write(summary_text)
+                    st.markdown('#')
+
                 if show_past_medical_text:
                     st.write("**Past Medical Text**")
                     st.write(past_medical_text)
+                    st.markdown('#')
+
                 if show_chatgpt_prompt:
                     st.write("**ChatGPT Prompt**")
                     st.write(chatgpt_prompt)
+                    st.markdown('#')
 
                 # Print Reponse
                 if show_chatgpt_response:
