@@ -26,6 +26,7 @@ def main():
         debug_summary_text = st.toggle("Show summary text extracted", value=False)
         debug_past_medical_text = st.toggle("Show past medical text extracted", value=False)
         debug_chatgpt_prompt = st.toggle("Show ChatGPT prompt", value=False)
+        show_chatgpt_response = st.toggle("Show ChatGPT response", value=True)
 
     if st.button("Rewordify"):
         try:
@@ -58,7 +59,8 @@ def main():
                     st.write(chatgpt_prompt)
 
                 # Print Reponse
-                st.code(response + '\n\n' + past_medical_text, language="python")
+                if show_chatgpt_response:
+                    st.code(response + '\n\n' + past_medical_text, language="python")
             
             elif pdf_file is None:
                 st.write("Please choose a valid PDF file")
