@@ -73,7 +73,7 @@ def main():
 
                 # Debug
                 if show_raw_pdf_text:
-                    with st.container(boder=True):
+                    with st.container(border=True):
                         st.write("**Raw PDF Text**")
                         st.write(pdf_text)
 
