@@ -5,8 +5,6 @@ import util
 st.set_page_config(page_title="enable rewordify", page_icon="🦄")
 
 # Variables
-prompt_template = """Every time I enter text, act as a consultant neurologist. Use the text to summarize the patient's presenting complaint in a professional manner that would be suitable to communicate to other physicians. Write in paragraphs. ONLY SUMMARIZE THE GIVEN INFORMATION. Do not indicate or suggest that further evaluation or investigation is needed."""
-
 enable_start = '[-enable start-]'
 enable_end = '[-enable end-]'
 icbc_start = '[-icbc start-]'
@@ -17,6 +15,14 @@ def main():
     st.image('rewordify-logo.jpg')
     st.markdown('#')
 
+    # Prompt
+    prompt_template = st.text_area(
+        'ChatGPT Prompt',
+        "Every time I enter text, act as a consultant neurologist."
+        "Use the text to summarize the patient's presenting complaint in a professional manner that would be suitable to communicate to other physicians."
+        "Write in paragraphs. ONLY SUMMARIZE THE GIVEN INFORMATION. Do not indicate or suggest that further evaluation or investigation is needed."
+    )
+
     # PDF File Uploader
     pdf_file = st.file_uploader("**Upload a PDF file**", type='pdf', accept_multiple_files=False, disabled=False, label_visibility="visible")
 
@@ -25,7 +31,7 @@ def main():
         col1, col2 = st.columns(2)
 
         with col1:
-            show_pdf_text = st.toggle("Raw PDF Text", value=False, disabled=False, label_visibility="visible")
+            show_pdf_text = st.toggle("Raw extracted PDF text", value=False, disabled=False, label_visibility="visible")
             show_text_between_markers = st.toggle("Text between markers", value=False, disabled=False, label_visibility="visible")
             show_personal_info = st.toggle("Personal data", value=False, disabled=False, label_visibility="visible")
             show_summary_text = st.toggle("Summary text", value=False, disabled=False, label_visibility="visible")
