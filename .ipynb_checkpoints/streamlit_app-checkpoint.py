@@ -15,12 +15,11 @@ icbc_end = '[-icbc end-]'
 def main():
     st.title("Rewordify")
 
-    api_key = st.text_input('OpenAI API Key')
     pdf_file = st.file_uploader("Choose a PDF file", type='pdf', accept_multiple_files=False, disabled=False, label_visibility="visible")
 
     if st.button("Rewordify"):
         try:
-            if pdf_file is not None and api_key != '':
+            if pdf_file is not None:
                 with st.spinner('Running...'):
                     pdf_text = util.extract_text_from_pdf(pdf_file) 
                     text_between_markers = util.extract_text_between_markers(pdf_text, enable_start, enable_end, icbc_start, icbc_end)
@@ -29,14 +28,11 @@ def main():
                     past_medical_text = util.get_past_medical_text(text_between_markers)
                     chatgpt_prompt = prompt_template + summary_text
                     
-                    response = util.call_chatgpt(chatgpt_prompt, api_key)
+                    response = util.call_chatgpt(chatgpt_prompt, st.secrets["api_key"])
                     
                 st.success('Done!')
                 st.write(name, age, gender)
                 st.code(response + '\n\n' + past_medical_text, language="python")
-
-            elif api_key == '':
-                st.write("Please enter an API Key")
             
             elif pdf_file is None:
                 st.write("Please choose a valid PDF file")
