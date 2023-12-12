@@ -14,7 +14,7 @@ icbc_end = '[-icbc end-]'
 
 def main():
 
-    st.image('enable-logo.jpg')
+    st.image('rewordify-logo.jpg')
     st.markdown('#')
 
     # PDF File Uploader
