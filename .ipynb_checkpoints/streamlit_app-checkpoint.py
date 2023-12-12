@@ -14,7 +14,7 @@ icbc_end = '[-icbc end-]'
 
 def main():
 
-    st.image('enable-logo.jpg')
+    st.image('enable-logo.jpg') 
 
     # PDF File Uploader
     pdf_file = st.file_uploader("**Upload a PDF file**", type='pdf', accept_multiple_files=False, disabled=False, label_visibility="visible")
