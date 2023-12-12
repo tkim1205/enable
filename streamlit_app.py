@@ -73,8 +73,10 @@ def main():
 
                 # Debug
                 if show_raw_pdf_text:
-                    st.write("**Raw PDF Text**")
-                    st.write(pdf_text)
+                    with st.container(boder=True):
+                        st.write("**Raw PDF Text**")
+                        st.write(pdf_text)
+
                     st.markdown('#')
 
                 if show_text_between_markers:
@@ -107,7 +109,7 @@ def main():
                 # Print Reponse
                 if show_chatgpt_response:
                     st.write("**ChatGPT Response**")
-                    st.code(response + '\n\n' + past_medical_text, language="python")
+                    st.write(response + '\n\n' + past_medical_text)
             
             elif pdf_file is None:
                 st.write("Please choose a valid PDF file")
