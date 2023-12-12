@@ -20,10 +20,10 @@ def main():
     # Prompt
     prompt_template = st.text_area(
         '**ChatGPT Prompt**',
-        "Every time I enter text, act as a consultant neurologist. "
-        "Use the text to summarize the patient's presenting complaint in a professional manner that would be suitable to communicate to other physicians. "
-        "Write in paragraphs. ONLY SUMMARIZE THE GIVEN INFORMATION. Do not indicate or suggest that further evaluation or investigation is needed."
-        "\n"
+        "Every time I enter text, act as a consultant neurologist. Use the text to summarize the patient's presenting complaint in a professional manner that would be suitable to communicate to other physicians. Write in paragraphs. ONLY SUMMARIZE THE GIVEN INFORMATION. Do not indicate or suggest that further evaluation or investigation is needed.",
+        height=100,
+        disabled=False,
+        label_visibility="visible"
     )
 
     # Add space
