@@ -25,15 +25,15 @@ def main():
         col1, col2 = st.columns(2)
 
         with col1:
-            debug_pdf_text = st.toggle("Show extracted PDF Text", value=False, disabled=False, label_visibility="visible")
-            debug_text_between_markers = st.toggle("Show text between markers", value=False, disabled=False, label_visibility="visible")
-            debug_personal_info = st.toggle("Show personal data extracted", value=False, disabled=False, label_visibility="visible")
-            debug_summary_text = st.toggle("Show summary text extracted", value=False, disabled=False, label_visibility="visible")
+            debug_pdf_text = st.toggle("Raw PDF Text", value=False, disabled=False, label_visibility="visible")
+            debug_text_between_markers = st.toggle("Text between markers", value=False, disabled=False, label_visibility="visible")
+            debug_personal_info = st.toggle("Personal data", value=False, disabled=False, label_visibility="visible")
+            debug_summary_text = st.toggle("Summary text", value=False, disabled=False, label_visibility="visible")
 
         with col2:
-            debug_past_medical_text = st.toggle("Show past medical text extracted", value=False, disabled=False, label_visibility="visible")
-            debug_chatgpt_prompt = st.toggle("Show ChatGPT prompt", value=False, disabled=False, label_visibility="visible")
-            show_chatgpt_response = st.toggle("Show ChatGPT response", value=True, disabled=False, label_visibility="visible")
+            debug_past_medical_text = st.toggle("Past medical text", value=False, disabled=False, label_visibility="visible")
+            debug_chatgpt_prompt = st.toggle("ChatGPT prompt", value=False, disabled=False, label_visibility="visible")
+            show_chatgpt_response = st.toggle("ChatGPT response", value=True, disabled=False, label_visibility="visible")
 
     if st.button("Rewordify"):
         try:
