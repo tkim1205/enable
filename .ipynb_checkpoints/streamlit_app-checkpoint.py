@@ -20,7 +20,7 @@ def main():
     pdf_file = st.file_uploader("**Upload a PDF file**", type='pdf', accept_multiple_files=False, disabled=False, label_visibility="visible")
 
     # Debug
-    with st.expander("$debug mode$"):
+    with st.expander("debug"):
         col1, col2 = st.columns(2)
 
         with col1:
