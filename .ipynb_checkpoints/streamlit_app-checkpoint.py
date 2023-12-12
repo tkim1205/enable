@@ -27,6 +27,7 @@ def main():
         debug_past_medical_text = st.toggle("Show past medical text extracted", value=False, disabled=False, label_visibility="visible")
         debug_chatgpt_prompt = st.toggle("Show ChatGPT prompt", value=False, disabled=False, label_visibility="visible")
         show_chatgpt_response = st.toggle("Show ChatGPT response", value=True, disabled=False, label_visibility="visible")
+        testtest = st.toggle("Test", value=False, disabled=False, label_visibility="visible")
 
     if st.button("Rewordify"):
         try:
