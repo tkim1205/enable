@@ -16,7 +16,7 @@ def main():
 
     col1, mid, col2 = st.columns([1,1,20])
     with col1:
-        st.image('enable-logo.jpg', width=60)
+        st.image('enable-logo.jpg')
     with col2:
         st.title("Rewordify")
 
