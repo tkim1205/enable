@@ -39,7 +39,7 @@ def main():
         col1, col2 = st.columns(2)
 
         with col1:
-            show_pdf_text = st.toggle("Raw extracted PDF text", value=False, disabled=False, label_visibility="visible")
+            show_raw_pdf_text = st.toggle("Raw extracted PDF text", value=False, disabled=False, label_visibility="visible")
             show_text_between_markers = st.toggle("Text between markers", value=False, disabled=False, label_visibility="visible")
             show_personal_info = st.toggle("Personal data", value=False, disabled=False, label_visibility="visible")
             show_summary_text = st.toggle("Summary text", value=False, disabled=False, label_visibility="visible")
@@ -71,23 +71,30 @@ def main():
                 st.success('Done!')
 
                 # Debug
-                if show_pdf_text:
+                if show_raw_pdf_text:
+                    st.write("**Raw PDF Text**")
                     st.write(pdf_text)
                 if show_text_between_markers:
+                    st.write("**Text Between Markers**")
                     st.write(text_between_markers)
                 if show_personal_info:
+                    st.write("**Personal Information**")
                     st.write("Name:", name)
                     st.write("Age:", age)
                     st.write("Gender:", gender)
                 if show_summary_text:
+                    st.write("**Summary Text**")
                     st.write(summary_text)
                 if show_past_medical_text:
+                    st.write("**Past Medical Text**")
                     st.write(past_medical_text)
                 if show_chatgpt_prompt:
+                    st.write("**ChatGPT Prompt**")
                     st.write(chatgpt_prompt)
 
                 # Print Reponse
                 if show_chatgpt_response:
+                    st.write("**ChatGPT Response**")
                     st.code(response + '\n\n' + past_medical_text, language="python")
             
             elif pdf_file is None:
