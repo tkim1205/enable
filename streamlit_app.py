@@ -23,10 +23,12 @@ def main():
         "Write in paragraphs. ONLY SUMMARIZE THE GIVEN INFORMATION. Do not indicate or suggest that further evaluation or investigation is needed."
     )
 
+    st.markdown('#')
+
     # PDF File Uploader
     pdf_file = st.file_uploader("**Upload a PDF file**", type='pdf', accept_multiple_files=False, disabled=False, label_visibility="visible")
 
-    # Debug
+    # Display Options
     with st.expander("display options"):
         col1, col2 = st.columns(2)
 
@@ -41,6 +43,7 @@ def main():
             show_chatgpt_prompt = st.toggle("ChatGPT prompt", value=False, disabled=False, label_visibility="visible")
             show_chatgpt_response = st.toggle("ChatGPT response", value=True, disabled=False, label_visibility="visible")
 
+    # Action button
     if st.button("Rewordify"):
         try:
             if pdf_file is not None:
