@@ -5,7 +5,7 @@ import util
 st.set_page_config(page_title="Rewordify", page_icon="🦄")
 
 # Variables
-prompt_template = """Every time I enter text, act as a consultant neurologist. Use the text to summarize the patient's presenting complaint in a professional manner that would be suitable to communicate to other physicians. Write in paragraphs. ONLY SUMMARIZE THE GIVEN INFORMATION. Do not indicate or suggest that further evaluation or investigation is needed.\n"""
+prompt_template = """Every time I enter text, act as a consultant neurologist. Use the text to summarize the patient's presenting complaint in a professional manner that would be suitable to communicate to other physicians. Write in paragraphs. ONLY SUMMARIZE THE GIVEN INFORMATION. Do not indicate or suggest that further evaluation or investigation is needed."""
 
 enable_start = '[-enable start-]'
 enable_end = '[-enable end-]'
@@ -42,7 +42,7 @@ def main():
                     name, age, gender = util.extract_information(pdf_text)
                     summary_text = util.get_summary_text(text_between_markers)
                     past_medical_text = util.get_past_medical_text(text_between_markers)
-                    chatgpt_prompt = prompt_template + summary_text
+                    chatgpt_prompt = prompt_template + "\n\n" + summary_text
 
                     if show_chatgpt_response:
                         response = util.call_chatgpt(chatgpt_prompt, st.secrets["api_key"])
