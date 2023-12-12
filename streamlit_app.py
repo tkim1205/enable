@@ -19,7 +19,7 @@ def main():
 
     # Model
     model = st.selectbox(
-        'ChatGPT Model',
+        '**ChatGPT Model**',
         ('gpt-4', 'gpt-3.5-turbo'))
 
     # Prompt
