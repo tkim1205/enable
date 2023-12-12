@@ -43,8 +43,9 @@ def main():
                     summary_text = util.get_summary_text(text_between_markers)
                     past_medical_text = util.get_past_medical_text(text_between_markers)
                     chatgpt_prompt = prompt_template + summary_text
-                    
-                    response = util.call_chatgpt(chatgpt_prompt, st.secrets["api_key"])
+
+                    if show_chatgpt_response:
+                        response = util.call_chatgpt(chatgpt_prompt, st.secrets["api_key"])
 
                 # Done
                 st.success('Done!')
