@@ -13,6 +13,7 @@ icbc_start = '[-icbc start-]'
 icbc_end = '[-icbc end-]'
 
 def main():
+    st.image('footer-logo.svg')
     st.title("Rewordify")
 
     # PDF File Uploader
