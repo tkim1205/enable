@@ -13,6 +13,8 @@ icbc_end = '[-icbc end-]'
 def main():
 
     st.image('rewordify-logo.jpg')
+
+    # Add space
     st.markdown('#')
 
     # Prompt
@@ -23,10 +25,14 @@ def main():
         "Write in paragraphs. ONLY SUMMARIZE THE GIVEN INFORMATION. Do not indicate or suggest that further evaluation or investigation is needed."
     )
 
+    # Add space
     st.markdown('#')
 
     # PDF File Uploader
     pdf_file = st.file_uploader("**Upload a PDF file**", type='pdf', accept_multiple_files=False, disabled=False, label_visibility="visible")
+
+    # Add space
+    st.markdown('#')
 
     # Display Options
     with st.expander("display options"):
@@ -42,6 +48,9 @@ def main():
             show_past_medical_text = st.toggle("Past medical text", value=False, disabled=False, label_visibility="visible")
             show_chatgpt_prompt = st.toggle("ChatGPT prompt", value=False, disabled=False, label_visibility="visible")
             show_chatgpt_response = st.toggle("ChatGPT response", value=True, disabled=False, label_visibility="visible")
+
+    # Add space
+    st.markdown('#')
 
     # Action button
     if st.button("Rewordify"):
