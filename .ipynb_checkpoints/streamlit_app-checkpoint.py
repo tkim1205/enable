@@ -15,6 +15,7 @@ icbc_end = '[-icbc end-]'
 def main():
     st.image('https://enablemedical.ca/wp-content/uploads/2022/02/footer-logo.svg')
     st.title("Rewordify")
+    st.image('https://enablemedical.ca/wp-content/uploads/2022/02/footer-logo.svg')
 
     # PDF File Uploader
     pdf_file = st.file_uploader("Choose a PDF file", type='pdf', accept_multiple_files=False, disabled=False, label_visibility="visible")
