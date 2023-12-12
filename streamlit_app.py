@@ -20,14 +20,18 @@ def main():
 
     # Debug
     with st.expander("Debug mode"):
-        debug_pdf_text = st.toggle("Show extracted PDF Text", value=False, disabled=False, label_visibility="visible")
-        debug_text_between_markers = st.toggle("Show text between markers", value=False, disabled=False, label_visibility="visible")
-        debug_personal_info = st.toggle("Show personal data extracted", value=False, disabled=False, label_visibility="visible")
-        debug_summary_text = st.toggle("Show summary text extracted", value=False, disabled=False, label_visibility="visible")
-        debug_past_medical_text = st.toggle("Show past medical text extracted", value=False, disabled=False, label_visibility="visible")
-        debug_chatgpt_prompt = st.toggle("Show ChatGPT prompt", value=False, disabled=False, label_visibility="visible")
-        show_chatgpt_response = st.toggle("Show ChatGPT response", value=True, disabled=False, label_visibility="visible")
-        testtest = st.toggle("Test", value=False, disabled=False, label_visibility="visible")
+        col1, col2 = st.columns(2)
+
+        with col1:
+            debug_pdf_text = st.toggle("Show extracted PDF Text", value=False, disabled=False, label_visibility="visible")
+            debug_text_between_markers = st.toggle("Show text between markers", value=False, disabled=False, label_visibility="visible")
+            debug_personal_info = st.toggle("Show personal data extracted", value=False, disabled=False, label_visibility="visible")
+            debug_summary_text = st.toggle("Show summary text extracted", value=False, disabled=False, label_visibility="visible")
+
+        with col2:
+            debug_past_medical_text = st.toggle("Show past medical text extracted", value=False, disabled=False, label_visibility="visible")
+            debug_chatgpt_prompt = st.toggle("Show ChatGPT prompt", value=False, disabled=False, label_visibility="visible")
+            show_chatgpt_response = st.toggle("Show ChatGPT response", value=True, disabled=False, label_visibility="visible")
 
     if st.button("Rewordify"):
         try:
