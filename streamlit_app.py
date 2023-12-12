@@ -13,8 +13,12 @@ icbc_start = '[-icbc start-]'
 icbc_end = '[-icbc end-]'
 
 def main():
-    st.image('enable-logo.jpg')
-    st.title("Rewordify")
+
+    col1, mid, col2 = st.columns([1,1,20])
+    with col1:
+        st.image('enable-logo.jpg', width=60)
+    with col2:
+        st.title("Rewordify")
 
     # PDF File Uploader
     pdf_file = st.file_uploader("**Upload a PDF file**", type='pdf', accept_multiple_files=False, disabled=False, label_visibility="visible")
