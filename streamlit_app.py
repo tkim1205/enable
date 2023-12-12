@@ -25,14 +25,14 @@ def main():
         col1, col2 = st.columns(2)
 
         with col1:
-            debug_pdf_text = st.toggle("Raw PDF Text", value=False, disabled=False, label_visibility="visible")
-            debug_text_between_markers = st.toggle("Text between markers", value=False, disabled=False, label_visibility="visible")
-            debug_personal_info = st.toggle("Personal data", value=False, disabled=False, label_visibility="visible")
-            debug_summary_text = st.toggle("Summary text", value=False, disabled=False, label_visibility="visible")
+            show_pdf_text = st.toggle("Raw PDF Text", value=False, disabled=False, label_visibility="visible")
+            show_text_between_markers = st.toggle("Text between markers", value=False, disabled=False, label_visibility="visible")
+            show_personal_info = st.toggle("Personal data", value=False, disabled=False, label_visibility="visible")
+            show_summary_text = st.toggle("Summary text", value=False, disabled=False, label_visibility="visible")
 
         with col2:
-            debug_past_medical_text = st.toggle("Past medical text", value=False, disabled=False, label_visibility="visible")
-            debug_chatgpt_prompt = st.toggle("ChatGPT prompt", value=False, disabled=False, label_visibility="visible")
+            show_past_medical_text = st.toggle("Past medical text", value=False, disabled=False, label_visibility="visible")
+            show_chatgpt_prompt = st.toggle("ChatGPT prompt", value=False, disabled=False, label_visibility="visible")
             show_chatgpt_response = st.toggle("ChatGPT response", value=True, disabled=False, label_visibility="visible")
 
     if st.button("Rewordify"):
@@ -53,19 +53,19 @@ def main():
                 st.success('Done!')
 
                 # Debug
-                if debug_pdf_text:
+                if show_pdf_text:
                     st.write(pdf_text)
-                if debug_text_between_markers:
+                if show_text_between_markers:
                     st.write(text_between_markers)
-                if debug_personal_info:
+                if show_personal_info:
                     st.write("Name:", name)
                     st.write("Age:", age)
                     st.write("Gender:", gender)
-                if debug_summary_text:
+                if show_summary_text:
                     st.write(summary_text)
-                if debug_past_medical_text:
+                if show_past_medical_text:
                     st.write(past_medical_text)
-                if debug_chatgpt_prompt:
+                if show_chatgpt_prompt:
                     st.write(chatgpt_prompt)
 
                 # Print Reponse
