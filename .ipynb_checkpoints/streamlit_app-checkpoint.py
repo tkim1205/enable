@@ -35,7 +35,7 @@ def main():
             debug_chatgpt_prompt = st.toggle("Show ChatGPT prompt", value=False, disabled=False, label_visibility="visible")
             show_chatgpt_response = st.toggle("Show ChatGPT response", value=True, disabled=False, label_visibility="visible")
 
-    if st.button("rewordify!"):
+    if st.button("Rewordify"):
         try:
             if pdf_file is not None:
                 with st.spinner('Running...'):
