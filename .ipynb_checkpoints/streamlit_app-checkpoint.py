@@ -20,7 +20,7 @@ def main():
     pdf_file = st.file_uploader("**Upload a PDF file**", type='pdf', accept_multiple_files=False, disabled=False, label_visibility="visible")
 
     # Debug
-    with st.expander("debug"):
+    with st.expander("$debug"):
         col1, col2 = st.columns(2)
 
         with col1:
@@ -34,7 +34,7 @@ def main():
             debug_chatgpt_prompt = st.toggle("Show ChatGPT prompt", value=False, disabled=False, label_visibility="visible")
             show_chatgpt_response = st.toggle("Show ChatGPT response", value=True, disabled=False, label_visibility="visible")
 
-    if st.button("Rewordify"):
+    if st.button("rewordify"):
         try:
             if pdf_file is not None:
                 with st.spinner('Running...'):
