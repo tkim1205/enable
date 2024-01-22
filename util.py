@@ -2,7 +2,13 @@ import re
 import warnings
 import PyPDF2
 from PyPDF2 import PdfReader
-#import fitz
+import fitz
+
+def fitz_extractor(pdf):
+    doc = fitz.open(pdf)
+    for page in doc: # iterate the document pages
+        text = page.get_text() # get plain text encoded as UTF-8
+    return text
 
 def extract_text_from_pdf(pdf): 
     pdf_reader = PdfReader(pdf) 
