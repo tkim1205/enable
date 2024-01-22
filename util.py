@@ -2,7 +2,7 @@ import re
 import warnings
 import PyPDF2
 from PyPDF2 import PdfReader
-import fitz
+#import fitz
 
 def extract_text_from_pdf(pdf): 
     pdf_reader = PdfReader(pdf) 
