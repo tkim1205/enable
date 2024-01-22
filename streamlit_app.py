@@ -1,5 +1,6 @@
 #import requests
 import streamlit as st
+import fitz
 import util
 
 st.set_page_config(page_title="enable rewordify", page_icon="🦄")
