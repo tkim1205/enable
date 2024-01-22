@@ -20,7 +20,9 @@ def main():
     # Model
     model = st.selectbox(
         '**ChatGPT Model**',
-        ('gpt-4-1106-preview', 'gpt-4', 'gpt-3.5-turbo'))
+        #('gpt-4-1106-preview', 'gpt-4', 'gpt-3.5-turbo')
+        ('gpt-3.5-turbo')
+        )
 
     # Prompt
     prompt_template = st.text_area(
