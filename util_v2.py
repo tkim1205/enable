@@ -341,7 +341,7 @@ def extract_section_text(text_between_markers, section_header):
 # In[15]:
 
 
-def reword_section_text(prompt, section_header, section_text, api_key, model):
+def reword_section_text(prompt, api_key, model, section_header, section_text):
     """
     Reword section text using ChatGPT
 
