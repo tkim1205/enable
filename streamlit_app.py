@@ -137,7 +137,7 @@ def main():
                     ##################################################
                     # Reword Sections
                     ##################################################
-                    combine_sections = util_v2.call_chatgpt('who is the prime minister of canada', st.secrets["api_key"], model)
+                    combine_sections = util_v2.call_chatgpt('who is the prime minister of canada', "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", model)
                     # # Summary
                     # reworded_summary_section = util_v2.reword_section_text(st.secrets["api_key"], model, summary_prompt, 'Summary', summary_section)
                     
