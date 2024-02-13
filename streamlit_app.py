@@ -137,38 +137,39 @@ def main():
                     ##################################################
                     # Reword Sections
                     ##################################################
-                    # Summary
-                    reworded_summary_section = util_v2.reword_section_text(st.secrets["api_key"], model, summary_prompt, 'Summary', summary_section)
+                    combine_sections = util_v2.call_chatgpt('who is the prime minister of canada', st.secrets["api_key"], model)
+                    # # Summary
+                    # reworded_summary_section = util_v2.reword_section_text(st.secrets["api_key"], model, summary_prompt, 'Summary', summary_section)
                     
-                    # Past Medical/Family History
-                    if util_v2.is_na_string(past_medical_section) == True and util_v2.is_na_string(familiy_history_section) == True:
-                        reworded_past_medical_family_history_section = 'Past Medical/Family History:\nN/A'
-                    else:
-                        if util_v2.is_na_string(past_medical_section) == False:
-                            past_medical_family_history_combined = past_medical_section
-                        if util_v2.is_na_string(familiy_history_section) == False:
-                            past_medical_family_history_combined = past_medical_family_history_combined + '\n' + familiy_history_section
-                        reworded_past_medical_family_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, past_medical_prompt, 'Past Medical/Family History', past_medical_family_history_combined)
+                    # # Past Medical/Family History
+                    # if util_v2.is_na_string(past_medical_section) == True and util_v2.is_na_string(familiy_history_section) == True:
+                    #     reworded_past_medical_family_history_section = 'Past Medical/Family History:\nN/A'
+                    # else:
+                    #     if util_v2.is_na_string(past_medical_section) == False:
+                    #         past_medical_family_history_combined = past_medical_section
+                    #     if util_v2.is_na_string(familiy_history_section) == False:
+                    #         past_medical_family_history_combined = past_medical_family_history_combined + '\n' + familiy_history_section
+                    #     reworded_past_medical_family_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, past_medical_prompt, 'Past Medical/Family History', past_medical_family_history_combined)
                     
-                    # Surgical History
-                    reworded_surgical_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, surgical_history_prompt, 'Surgical History', surgical_history_section)
+                    # # Surgical History
+                    # reworded_surgical_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, surgical_history_prompt, 'Surgical History', surgical_history_section)
                     
-                    # Current Medication
-                    reworded_current_medication_section = util_v2.reword_section_text(st.secrets["api_key"], model, current_medication_prompt, 'Current Medication', current_medications_section)
+                    # # Current Medication
+                    # reworded_current_medication_section = util_v2.reword_section_text(st.secrets["api_key"], model, current_medication_prompt, 'Current Medication', current_medications_section)
                     
-                    # Allergies
-                    reworded_allergies_section = util_v2.reword_section_text(st.secrets["api_key"], model, allergies_prompt, 'Allergies', allergies_section)
+                    # # Allergies
+                    # reworded_allergies_section = util_v2.reword_section_text(st.secrets["api_key"], model, allergies_prompt, 'Allergies', allergies_section)
                     
-                    # Social History
-                    reworded_social_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, social_history_prompt, 'Social History', social_history_section)
+                    # # Social History
+                    # reworded_social_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, social_history_prompt, 'Social History', social_history_section)
                     
-                    # Functional History
-                    reworded_functional_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, functional_history, 'Functional History', functional_history_section)
+                    # # Functional History
+                    # reworded_functional_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, functional_history, 'Functional History', functional_history_section)
                     
                     ##################################################
                     # Combine Sections
                     ##################################################
-                    combine_sections = reworded_summary_section +'\n\n'+ reworded_past_medical_family_history_section +'\n\n'+ reworded_surgical_history_section +'\n\n'+ reworded_current_medication_section +'\n\n'+ reworded_allergies_section +'\n\n'+ reworded_social_history_section +'\n\n'+ reworded_functional_history_section
+                    #combine_sections = reworded_summary_section +'\n\n'+ reworded_past_medical_family_history_section +'\n\n'+ reworded_surgical_history_section +'\n\n'+ reworded_current_medication_section +'\n\n'+ reworded_allergies_section +'\n\n'+ reworded_social_history_section +'\n\n'+ reworded_functional_history_section
 
                 # Done
                 st.success('Done!')
