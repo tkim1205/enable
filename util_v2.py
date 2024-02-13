@@ -9,7 +9,6 @@
 import fitz # imports the pymupdf library
 import re
 import warnings
-openai_api_key = "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"
 
 
 # ## Function: is_na_string(text)

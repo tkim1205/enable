@@ -99,7 +99,7 @@ def main():
                     ##################################################
                     # Extract PDF
                     ##################################################
-                    pdf_text = util_v2.pdf_file_extract_text("9.pdf")
+                    pdf_text = util_v2.pdf_file_extract_text(pdf_file)
                     
                     ##################################################
                     # Get patient info
