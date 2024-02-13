@@ -138,7 +138,7 @@ def main():
                     # Reword Sections
                     ##################################################
                     # Summary
-                    reworded_summary_section = util_v2.reword_section_text(summary_prompt, st.secrets["api_key"], model, 'Summary', summary_section)
+                    reworded_summary_section = util_v2.reword_section_text(st.secrets["api_key"], model, summary_prompt, 'Summary', summary_section)
                     
                     # Past Medical/Family History
                     if util_v2.is_na_string(past_medical_section) == True and util_v2.is_na_string(familiy_history_section) == True:
@@ -148,22 +148,22 @@ def main():
                             past_medical_family_history_combined = past_medical_section
                         if util_v2.is_na_string(familiy_history_section) == False:
                             past_medical_family_history_combined = past_medical_family_history_combined + '\n' + familiy_history_section
-                        reworded_past_medical_family_history_section = util_v2.reword_section_text(past_medical_prompt, st.secrets["api_key"], model, 'Past Medical/Family History', past_medical_family_history_combined)
+                        reworded_past_medical_family_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, past_medical_prompt, 'Past Medical/Family History', past_medical_family_history_combined)
                     
                     # Surgical History
-                    reworded_surgical_history_section = util_v2.reword_section_text(surgical_history_prompt, st.secrets["api_key"], model, 'Surgical History', surgical_history_section)
+                    reworded_surgical_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, surgical_history_prompt, 'Surgical History', surgical_history_section)
                     
                     # Current Medication
-                    reworded_current_medication_section = util_v2.reword_section_text(current_medication_prompt, st.secrets["api_key"], model, 'Current Medication', current_medications_section)
+                    reworded_current_medication_section = util_v2.reword_section_text(st.secrets["api_key"], model, current_medication_prompt, 'Current Medication', current_medications_section)
                     
                     # Allergies
-                    reworded_allergies_section = util_v2.reword_section_text(allergies_prompt, st.secrets["api_key"], model, 'Allergies', allergies_section)
+                    reworded_allergies_section = util_v2.reword_section_text(st.secrets["api_key"], model, allergies_prompt, 'Allergies', allergies_section)
                     
                     # Social History
-                    reworded_social_history_section = util_v2.reword_section_text(social_history_prompt, st.secrets["api_key"], model, 'Social History', social_history_section)
+                    reworded_social_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, social_history_prompt, 'Social History', social_history_section)
                     
                     # Functional History
-                    reworded_functional_history_section = util_v2.reword_section_text(functional_history, st.secrets["api_key"], model, 'Functional History', functional_history_section)
+                    reworded_functional_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, functional_history, 'Functional History', functional_history_section)
                     
                     ##################################################
                     # Combine Sections
