@@ -1,7 +1,7 @@
 #import requests
 import streamlit as st
 import fitz
-import util
+import util_v2
 
 st.set_page_config(page_title="enable rewordify", page_icon="🦄")
 
@@ -12,117 +12,171 @@ icbc_start = '[-icbc start-]'
 icbc_end = '[-icbc end-]'
 
 def main():
-
+    ##################################################
+    # Logo
+    ##################################################
     st.image('rewordify-logo.jpg')
 
-    # Add space
-    st.markdown('#')
-
+    ##################################################
     # Model
+    ##################################################
+    st.markdown('#')
     model = st.selectbox(
         "**ChatGPT Model**",
         ("gpt-3.5-turbo", "gpt-4 (disabled)")
         )
 
-    # Prompt
-    prompt_template = st.text_area(
-        '**ChatGPT Prompt**',
-        "Every time I enter text, act as a consultant neurologist. Use the text to summarize the patient's presenting complaint in a professional manner that would be suitable to communicate to other physicians. Write in paragraphs. ONLY SUMMARIZE THE GIVEN INFORMATION. Do not indicate or suggest that further evaluation or investigation is needed.",
-        height=120,
-        disabled=False,
-        label_visibility="visible"
-    )
-
-    # Add space
-    st.markdown('#')
-
+    ##################################################
     # PDF File Uploader
+    ##################################################
+    st.markdown('#')   
     pdf_file = st.file_uploader("**Upload a PDF file**", type='pdf', accept_multiple_files=False, disabled=False, label_visibility="visible")
 
-    # Add space
+    ##################################################
+    # Display Prompts
+    ##################################################
     st.markdown('#')
+    with st.expander("display prompts"):
+        summary_prompt = st.text_area(
+            '**Summary Prompt**',
+            "Every time I enter text, act as a consultant neurologist. Use the text to summarize the patient's presenting complaint in a professional manner that would be suitable to communicate to other physicians. Write in paragraphs. ONLY SUMMARIZE THE GIVEN INFORMATION. Do not indicate or suggest that further evaluation or investigation is needed",
+            height=120,
+            disabled=False,
+            label_visibility="visible"
+        )
+        past_medical_prompt = st.text_area(
+            '**Past Medical/Family History Prompt**',
+            "Reword the following in point form to use medical terminology",
+            height=20,
+            disabled=False,
+            label_visibility="visible"
+        )
+        surgical_history_prompt = st.text_area(
+            '**Surgical History Prompt**',
+            "Reword this to read more fluidly. keep it medically professional",
+            height=20,
+            disabled=False,
+            label_visibility="visible"
+        )
+        current_medication_prompt = st.text_area(
+            '**Current Medication Prompt**',
+            "Correct the spelling of the following medications and arrange them in point form. Do not state what the original spelling was. If an acronym was used, spell out the whole word",
+            height=20,
+            disabled=False,
+            label_visibility="visible"
+        )
+        allergies_prompt = st.text_area(
+            '**Allergies Prompt**',
+            "Reword this to read more fluidly. keep it medically professional",
+            height=20,
+            disabled=False,
+            label_visibility="visible"
+        )
+        social_history_prompt = st.text_area(
+            '**Social History Prompt**',
+            "Reword this to read more fluidly. keep it medically professional",
+            height=20,
+            disabled=False,
+            label_visibility="visible"
+        )
+        functional_history = st.text_area(
+            '**Functional History Prompt**',
+            "Reword this to read more fluidly. keep it medically professional",
+            height=20,
+            disabled=False,
+            label_visibility="visible"
+        )
 
-    # Display Options
-    with st.expander("display options"):
-        col1, col2 = st.columns(2)
-
-        with col1:
-            show_raw_pdf_text = st.toggle("Raw extracted PDF text", value=False, disabled=False, label_visibility="visible")
-            show_text_between_markers = st.toggle("Text between markers", value=False, disabled=False, label_visibility="visible")
-            show_personal_info = st.toggle("Personal data", value=False, disabled=False, label_visibility="visible")
-            show_summary_text = st.toggle("Summary text", value=False, disabled=False, label_visibility="visible")
-
-        with col2:
-            show_past_medical_text = st.toggle("Past medical text", value=False, disabled=False, label_visibility="visible")
-            show_chatgpt_prompt = st.toggle("ChatGPT prompt", value=False, disabled=False, label_visibility="visible")
-            show_chatgpt_response = st.toggle("ChatGPT response", value=True, disabled=False, label_visibility="visible")
-
-    # Add space
+    ##################################################
+    # Rewordify Action Button
+    ##################################################
     st.markdown('#')
-
-    # Action button
     if st.button("Rewordify"):
         try:
             if pdf_file is not None:
                 with st.spinner('Running...'):
-                    pdf_text = util.extract_text_from_pdf(pdf_file) 
-                    text_between_markers = util.extract_text_between_markers(pdf_text, enable_start, enable_end, icbc_start, icbc_end)
-                    name, age, gender = util.extract_information(pdf_text)
-                    summary_text = util.get_summary_text(text_between_markers)
-                    past_medical_text = util.get_past_medical_text(text_between_markers)
-                    chatgpt_prompt = prompt_template + "\n\nText:\n\n" + summary_text
-
-                    if show_chatgpt_response:
-                        response = util.call_chatgpt(chatgpt_prompt, st.secrets["api_key"], model)
+                    
+                    ##################################################
+                    # Extract PDF
+                    ##################################################
+                    pdf_text = util_v2.pdf_file_extract_text("9.pdf")
+                    
+                    ##################################################
+                    # Get patient info
+                    ##################################################
+                    fields = util_v2.extract_patient_info(pdf_text)
+                    name_text = fields['name']
+                    age_text = fields['age']
+                    gender_text = fields['gender']
+                    pronouns_text = fields['pronouns']
+                    
+                    # Get Occupation/Employer
+                    occupation_text = util_v2.extract_occupation(pdf_text)
+                    employer_text = util_v2.extract_employer(pdf_text)
+                    
+                    # Get Live with People text
+                    live_with_people_text = util_v2.extract_live_with_people(pdf_text)
+                    
+                    ##################################################
+                    # Get text between Markers
+                    ##################################################
+                    text_between_markers = util_v2.extract_text_between_markers(pdf_text, '[-enable start-]', '[-enable end-]')
+                    
+                    ##################################################
+                    # Get Section Text
+                    ##################################################
+                    summary_section = util_v2.extract_summary_text(text_between_markers)
+                    past_medical_section = util_v2.extract_section_text(text_between_markers, "past medical")
+                    surgical_history_section = util_v2.extract_section_text(text_between_markers, "surgical history")
+                    current_medications_section = util_v2.extract_section_text(text_between_markers, "current medications")
+                    allergies_section = util_v2.extract_section_text(text_between_markers, "allergies")
+                    familiy_history_section = util_v2.extract_section_text(text_between_markers, "family history")
+                    social_history_section = util_v2.extract_section_text(text_between_markers, "social history")
+                    functional_history_section = util_v2.extract_section_text(text_between_markers, "functional history")
+                    
+                    ##################################################
+                    # Reword Sections
+                    ##################################################
+                    # Summary
+                    reworded_summary_section = util_v2.reword_section_text(summary_prompt, 'Summary', summary_section, st.secrets["api_key"], model)
+                    
+                    # Past Medical/Family History
+                    if util_v2.is_na_string(past_medical_section) == True and util_v2.is_na_string(familiy_history_section) == True:
+                        reworded_past_medical_family_history_section = 'Past Medical/Family History:\nN/A'
+                    else:
+                        if util_v2.is_na_string(past_medical_section) == False:
+                            past_medical_family_history_combined = past_medical_section
+                        if util_v2.is_na_string(familiy_history_section) == False:
+                            past_medical_family_history_combined = past_medical_family_history_combined + '\n' + familiy_history_section
+                        reworded_past_medical_family_history_section = util_v2.reword_section_text(past_medical_prompt, 'Past Medical/Family History', past_medical_family_history_combined, st.secrets["api_key"], model)
+                    
+                    # Surgical History
+                    reworded_surgical_history_section = util_v2.reword_section_text(surgical_history_prompt, 'Surgical History', surgical_history_section, st.secrets["api_key"], model)
+                    
+                    # Current Medication
+                    reworded_current_medication_section = util_v2.reword_section_text(current_medication_prompt, 'Current Medication', current_medications_section, st.secrets["api_key"], model)
+                    
+                    # Allergies
+                    reworded_allergies_section = util_v2.reword_section_text(allergies_prompt, 'Allergies', allergies_section, st.secrets["api_key"], model)
+                    
+                    # Social History
+                    reworded_social_history_section = util_v2.reword_section_text(social_history_prompt, 'Social History', social_history_section, st.secrets["api_key"], model)
+                    
+                    # Functional History
+                    reworded_functional_history_section = util_v2.reword_section_text(functional_history, 'Functional History', functional_history_section, st.secrets["api_key"], model)
+                    
+                    ##################################################
+                    # Combine Sections
+                    ##################################################
+                    combine_sections = reworded_summary_section +'\n\n'+ reworded_past_medical_family_history_section +'\n\n'+ reworded_surgical_history_section +'\n\n'+ reworded_current_medication_section +'\n\n'+ reworded_allergies_section +'\n\n'+ reworded_social_history_section +'\n\n'+ reworded_functional_history_section
 
                 # Done
                 st.success('Done!')
                 st.markdown('#')
-
-                # Debug
-                if show_raw_pdf_text:
-                    st.write("**Raw PDF Text**")
-                    with st.container(border=True):
-                        st.write(pdf_text)
-                    st.markdown('#')
-
-                if show_text_between_markers:
-                    st.write("**Text Between Markers**")
-                    with st.container(border=True):
-                        st.write(text_between_markers)
-                    st.markdown('#')
-
-                if show_personal_info:
-                    st.write("**Personal Information**")
-                    with st.container(border=True):
-                        st.write("Name:", name)
-                        st.write("Age:", age)
-                        st.write("Gender:", gender)
-                    st.markdown('#')
-
-                if show_summary_text:
-                    st.write("**Summary Text**")
-                    with st.container(border=True):
-                        st.write(summary_text)
-                    st.markdown('#')
-
-                if show_past_medical_text:
-                    st.write("**Past Medical Text**")
-                    with st.container(border=True):
-                        st.write(past_medical_text)
-                    st.markdown('#')
-
-                if show_chatgpt_prompt:
-                    st.write("**ChatGPT Prompt**")
-                    with st.container(border=True):
-                        st.write(chatgpt_prompt)
-                    st.markdown('#')
-
-                # Print Reponse
-                if show_chatgpt_response:
-                    st.write("**ChatGPT Response**")
-                    with st.container(border=True):
-                        st.write(response + '\n\n' + past_medical_text)
+                
+                st.write("**ChatGPT Response**")
+                with st.container(border=True):
+                    st.write(combine_sections)
             
             elif pdf_file is None:
                 st.write("Please choose a valid PDF file")
