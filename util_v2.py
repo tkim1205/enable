@@ -247,7 +247,15 @@ def extract_text_between_markers(pdf_text, start_marker, end_marker):
     # Escape markers for use in regular expression
     start_marker_escaped = re.escape(start_marker)
     end_marker_escaped = re.escape(end_marker)
-    
+
+    # If start marker does not exist, default to after Pronouns
+    start_index = pdf_text.find(start_marker_escaped)
+    if start_index == -1:
+        match = re.search(r'\[-pronouns-\]', pdf_text)
+        if match:
+            next_line_start_index = match.end()  # End index of the match
+            start_marker_escaped = pdf_text.find('\n', next_line_start_index) + 1
+
     # If end marker does not exist, default to 1. Name
     end_index = pdf_text.find(end_marker_escaped)
     if end_index == -1:
