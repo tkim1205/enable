@@ -85,7 +85,8 @@ def pdf_file_extract_text(pdf_file):
     Returns:
         string: Extracted text from PDF file, excluding the headers and footers
     """
-    doc = fitz.open(pdf_file)  # Open the PDF
+    #doc = fitz.open(pdf_file)  # Open the PDF
+    doc = fitz.open(stream=pdf_file.read(), filetype="pdf")  # Open the PDF
     extracted_text = ""
 
     for page in doc:  # Iterate through each page
