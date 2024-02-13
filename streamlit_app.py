@@ -171,6 +171,8 @@ def main():
                     #################################################
                     combine_sections = reworded_summary_section +'\n\n'+ reworded_past_medical_family_history_section +'\n\n'+ reworded_surgical_history_section +'\n\n'+ reworded_current_medication_section +'\n\n'+ reworded_allergies_section +'\n\n'+ reworded_social_history_section +'\n\n'+ reworded_functional_history_section
                     
+                    combine_sections_formatted = ''
+
                     for chunk in re.split(r'(\s+)', combine_sections):
                         combine_sections_formatted += chunk + " "
 
