@@ -161,9 +161,9 @@ def main():
                     # Remove PII
                     if len(occupation_text) > 0 and util_v2.contains_pii(occupation_text) == False:
                         social_history_section = social_history_section.replace(occupation_text, "<occupation>")
-                    if len(employer_text) > 0 and util_v2.contains_pii(occupation_text) == False:
+                    if len(employer_text) > 0 and util_v2.contains_pii(employer_text) == False:
                         social_history_section = social_history_section.replace(employer_text, "<employer>")
-                    if len(live_with_people_text) > 0 and util_v2.contains_pii(occupation_text) == False:
+                    if len(live_with_people_text) > 0 and util_v2.contains_pii(live_with_people_text) == False:
                         social_history_section = social_history_section.replace(live_with_people_text, "<live_with_people>")
                     if len(name_text) > 0:
                         social_history_section = social_history_section.replace(name_text, "<name>")
@@ -172,9 +172,9 @@ def main():
                     # Readd PII
                     if len(occupation_text) > 0 and util_v2.contains_pii(occupation_text) == False:
                         reworded_social_history_section = reworded_social_history_section.replace("<occupation>", occupation_text)
-                    if len(employer_text) > 0 and util_v2.contains_pii(occupation_text) == False:
+                    if len(employer_text) > 0 and util_v2.contains_pii(employer_text) == False:
                         reworded_social_history_section = reworded_social_history_section.replace("<employer>", employer_text)
-                    if len(live_with_people_text) > 0 and util_v2.contains_pii(occupation_text) == False:
+                    if len(live_with_people_text) > 0 and util_v2.contains_pii(live_with_people_text) == False:
                         reworded_social_history_section = reworded_social_history_section.replace("<live_with_people>", live_with_people_text)
                     if len(name_text) > 0:
                         reworded_social_history_section = reworded_social_history_section.replace("<name>", name_text)
