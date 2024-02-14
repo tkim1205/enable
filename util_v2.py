@@ -127,6 +127,12 @@ def pdf_file_extract_text(pdf_file):
     # Remove the specific string " SUMMARY" from the extracted text
     extracted_text = extracted_text.replace(" SUMMARY", "")
 
+    # Define the regular expression pattern for " n a "
+    pattern = r"\b(n\s+a)\b"
+
+    # Perform case-insensitive replacement using re.sub()
+    extracted_text = re.sub(pattern, "N/A", extracted_text, flags=re.IGNORECASE)
+
     doc.close()
     return extracted_text
 
