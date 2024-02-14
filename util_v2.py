@@ -11,25 +11,29 @@ import re
 import warnings
 
 
-def contains_self_employ(input_string):
+def contains_pii(input_string):
     """
-    Checks if the input string contains both "self" and "employ" (case-insensitive).
+    Checks if the input string contains any of the specified keywords.
 
     Args:
     input_string (str): The input string to be checked.
 
     Returns:
-    bool: True if the input string contains both "self" and "employ", False otherwise.
+    bool: True if the input string contains any of the specified keywords, False otherwise.
     """
-    # Define the regular expression pattern
-    pattern = r"(?=.*self)(?=.*employ)"
+    # Define the list of keywords
+    keywords = ["common law", "self employ", "wife", "husband", "partner",
+                "son", "daughter", "child", "baby", "girl", "boy"]
+    
+    # Convert input string to lowercase for case-insensitive comparison
+    input_lower = input_string.lower()
 
-    # Use re.search to find if the pattern exists in the input string
-    match = re.search(pattern, input_string, re.IGNORECASE)
-
-    # Return True if both "self" and "employ" are found in the input string, False otherwise
-    return bool(match)
-
+    # Check if any of the keywords are present in the input string
+    for keyword in keywords:
+        if keyword in input_lower:
+            return True
+    
+    return False
 
 # ## Function: is_na_string(text)
 
