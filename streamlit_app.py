@@ -158,9 +158,9 @@ def main():
                     
                     # Social History
                     # Remove PII
-                    if len(occupation_text) > 0:
+                    if len(occupation_text) > 0 and util_v2.contains_self_employ(occupation_text) == False:
                         social_history_section = social_history_section.replace(occupation_text, "<occupation>")
-                    if len(employer_text) > 0:
+                    if len(employer_text) > 0 and util_v2.contains_self_employ(occupation_text) == False:
                         social_history_section = social_history_section.replace(employer_text, "<employer>")
                     if len(live_with_people_text) > 0:
                         social_history_section = social_history_section.replace(live_with_people_text, "<live_with_people>")
@@ -169,9 +169,9 @@ def main():
                     # Reword
                     reworded_social_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, social_history_prompt, 'Social History', social_history_section)
                     # Readd PII
-                    if len(occupation_text) > 0:
+                    if len(occupation_text) > 0 and util_v2.contains_self_employ(occupation_text) == False:
                         reworded_social_history_section = reworded_social_history_section.replace("<occupation>", occupation_text)
-                    if len(employer_text) > 0:
+                    if len(employer_text) > 0 and util_v2.contains_self_employ(occupation_text) == False:
                         reworded_social_history_section = reworded_social_history_section.replace("<employer>", employer_text)
                     if len(live_with_people_text) > 0:
                         reworded_social_history_section = reworded_social_history_section.replace("<live_with_people>", live_with_people_text)

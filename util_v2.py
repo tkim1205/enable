@@ -11,6 +11,26 @@ import re
 import warnings
 
 
+def contains_self_employ(input_string):
+    """
+    Checks if the input string contains both "self" and "employ" (case-insensitive).
+
+    Args:
+    input_string (str): The input string to be checked.
+
+    Returns:
+    bool: True if the input string contains both "self" and "employ", False otherwise.
+    """
+    # Define the regular expression pattern
+    pattern = r"(?=.*self)(?=.*employ)"
+
+    # Use re.search to find if the pattern exists in the input string
+    match = re.search(pattern, input_string, re.IGNORECASE)
+
+    # Return True if both "self" and "employ" are found in the input string, False otherwise
+    return bool(match)
+
+
 # ## Function: is_na_string(text)
 
 # In[5]:
