@@ -47,11 +47,13 @@ def is_na_string(text):
     Returns:
     bool: True if the processed text matches 'no', 'na', 'n' (case-insensitive), False otherwise.
     """
-    # Remove non-alphabetic characters using regular expression
-    text_alpha = re.sub(r'[^a-zA-Z]', '', text)
-    
-    na_patterns = ["no", "na", "n", ""]
-    return text_alpha.lower() in na_patterns
+    if text is None:
+        return True
+    else:
+        # Remove non-alphabetic characters using regular expression
+        text_alpha = re.sub(r'[^a-zA-Z]', '', text)
+        na_patterns = ["no", "na", "n", ""]
+        return text_alpha.lower() in na_patterns
 
 
 # ## Function: call_chatgpt(prompt)
