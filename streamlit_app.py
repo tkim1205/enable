@@ -141,6 +141,7 @@ def main():
                     if util_v2.is_na_string(past_medical_section) == True and util_v2.is_na_string(familiy_history_section) == True:
                         reworded_past_medical_family_history_section = 'Past Medical/Family History:\nN/A'
                     else:
+                        past_medical_family_history_combined = ''
                         if util_v2.is_na_string(past_medical_section) == False:
                             past_medical_family_history_combined = past_medical_section
                         if util_v2.is_na_string(familiy_history_section) == False:
