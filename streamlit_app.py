@@ -105,11 +105,7 @@ def main():
                     ##################################################
                     # Get patient info
                     ##################################################
-                    fields = util_v2.extract_patient_info(pdf_text)
-                    name_text = fields['name']
-                    age_text = fields['age']
-                    gender_text = fields['gender']
-                    pronouns_text = fields['pronouns']
+                    name_text, age_text, gender_text, pronouns_text = util_v2.extract_patient_info(pdf_text)
                     
                     # Get Occupation/Employer
                     occupation_text = util_v2.extract_occupation(pdf_text)

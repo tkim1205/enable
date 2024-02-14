@@ -130,23 +130,34 @@ def extract_patient_info(pdf_text):
         pdf_text (string): PDF string text
     
     Returns:
-        dictionary: return key-value pairs for the extracted Name, Age, Gender, and Pronoun attributes
+        tuple: A tuple containing values for name, age, gender, and pronouns fields. If a field is not found, a blank space is returned for that field.
     """
-    fields = {}
     patterns = {
         'name': r'\[-name-\]\s*(.*)',
         'age': r'\[-age-\]\s*(.*)',
         'gender': r'\[-gender-\]\s*(.*)',
         'pronouns': r'\[-pronouns-\]\s*(.*)'
-    }
+    }    
+    
+    # Initialize variables for each field
+    name = age = gender = pronouns = ""
 
+    # Iterate through each field pattern
     for field, pattern in patterns.items():
         match = re.search(pattern, pdf_text)
         if match:
-            cleaned_value = re.sub(r'[^a-zA-Z0-9\s]', '', match.group(1).strip())
-            fields[field] = cleaned_value
-
-    return fields
+            # Assign value to corresponding variable based on the field
+            if field == "name":
+                name = match.group(1)
+            elif field == "age":
+                age = match.group(1)
+            elif field == "gender":
+                gender = match.group(1)
+            elif field == "pronouns":
+                pronouns = match.group(1)
+    
+    # Return values for each field
+    return name, age, gender, pronouns
 
 
 # ## Function: extract_occupation(pdf_text)
