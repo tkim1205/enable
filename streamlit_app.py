@@ -161,7 +161,26 @@ def main():
                     reworded_allergies_section = util_v2.reword_section_text(st.secrets["api_key"], model, allergies_prompt, 'Allergies', allergies_section)
                     
                     # Social History
+                    # Remove PII
+                    if len(occupation_text) > 0:
+                        social_history_section = social_history_section.replace(occupation_text, "<occupation>")
+                    if len(employer_text) > 0:
+                        social_history_section = social_history_section.replace(employer_text, "<employer>")
+                    if len(live_with_people_text) > 0:
+                        social_history_section = social_history_section.replace(live_with_people_text, "<live_with_people>")
+                    if len(name_text) > 0:
+                        social_history_section = social_history_section.replace(name_text, "<name>")
+                    # Reword
                     reworded_social_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, social_history_prompt, 'Social History', social_history_section)
+                    # Readd PII
+                    if len(occupation_text) > 0:
+                        reworded_social_history_section = reworded_social_history_section.replace("<occupation>", occupation_text)
+                    if len(employer_text) > 0:
+                        reworded_social_history_section = reworded_social_history_section.replace("<employer>", employer_text)
+                    if len(live_with_people_text) > 0:
+                        reworded_social_history_section = reworded_social_history_section.replace("<live_with_people>", live_with_people_text)
+                    if len(name_text) > 0:
+                        reworded_social_history_section = reworded_social_history_section.replace("<name>", name_text)
                     
                     # Functional History
                     reworded_functional_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, functional_history, 'Functional History', functional_history_section)
