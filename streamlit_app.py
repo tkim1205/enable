@@ -209,6 +209,7 @@ def main():
                 with col1:
                     st.write("**Extracted Text**")
                     with st.container(border=True):
+                        st.markdown(original_text)
                         st.markdown(original_text_new)
 
                 with col2:
