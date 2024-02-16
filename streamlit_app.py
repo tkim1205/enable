@@ -134,12 +134,16 @@ def main():
                     ##################################################
                     # Reword Sections
                     ##################################################
+                    original_text = ''
+
                     # Summary
                     reworded_summary_section = util_v2.reword_section_text(st.secrets["api_key"], model, summary_prompt, 'Summary', summary_section)
+                    original_text += 'Summary:\n' + summary_section
                     
                     # Past Medical/Family History
                     if util_v2.is_na_string(past_medical_section) == True and util_v2.is_na_string(familiy_history_section) == True:
                         reworded_past_medical_family_history_section = 'Past Medical/Family History:\nN/A'
+                        original_text += '\n\nPast Medical/Family History:\nN/A'
                     else:
                         past_medical_family_history_combined = ''
                         if util_v2.is_na_string(past_medical_section) == False:
@@ -147,17 +151,22 @@ def main():
                         if util_v2.is_na_string(familiy_history_section) == False:
                             past_medical_family_history_combined = past_medical_family_history_combined + '\n' + familiy_history_section
                         reworded_past_medical_family_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, past_medical_prompt, 'Past Medical/Family History', past_medical_family_history_combined)
+                        original_text += '\n\nPast Medical/Family History:\n' + past_medical_family_history_combined
                     
                     # Surgical History
                     reworded_surgical_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, surgical_history_prompt, 'Surgical History', surgical_history_section)
+                    original_text += '\n\nSurgical History:\n' + surgical_history_section
                     
                     # Current Medication
                     reworded_current_medication_section = util_v2.reword_section_text(st.secrets["api_key"], model, current_medication_prompt, 'Current Medication', current_medications_section)
-                    
+                    original_text += '\n\nCurrent Medication:\n' + current_medications_section
+
                     # Allergies
                     reworded_allergies_section = util_v2.reword_section_text(st.secrets["api_key"], model, allergies_prompt, 'Allergies', allergies_section)
-                    
+                    original_text += '\n\nAllergies:\n' + allergies_section
+
                     # Social History
+                    original_text += '\n\nSocial History:\n' + social_history_section
                     # Remove PII
                     if len(occupation_text) > 0 and util_v2.contains_pii(occupation_text) == False:
                         social_history_section = social_history_section.replace(occupation_text, "<occupation>")
@@ -181,6 +190,7 @@ def main():
                     
                     # Functional History
                     reworded_functional_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, functional_history_prompt, 'Functional History', functional_history_section)
+                    original_text += '\n\nFunctional History:\n' + functional_history_section
                     
                     ##################################################
                     # Combine Sections
@@ -189,8 +199,12 @@ def main():
 
                 # Done
                 st.success('Done!')
-                st.markdown('#')
                 
+                st.markdown('#')
+                with st.expander("original extracted text"):
+                    st.code(original_text, language="python", line_numbers=False)
+
+                st.markdown('#')
                 st.write("**ChatGPT Response**")
                 with st.container(border=True):
                     # st.write(combine_sections_formatted)
