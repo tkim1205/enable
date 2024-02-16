@@ -209,11 +209,13 @@ def main():
                 with col1:
                     st.write("**Extracted Text**")
                     with st.container(border=True):
+                        st.markdown(original_text)
                         st.markdown(original_text_new)
 
                 with col2:
                     st.write("**ChatGPT Response**")
                     with st.container(border=True):
+                        st.markdown(combine_sections)
                         st.markdown(combine_sections_new)
             
             elif pdf_file is None:
