@@ -206,12 +206,14 @@ def main():
                 with col1:
                     st.write("**Extracted Text**")
                     with st.container(border=True):
+                        original_text = original_text.replace('\n', '\n\n')
                         st.write(original_text)
                         # st.code(original_text, language="python", line_numbers=False)
 
                 with col2:
                     st.write("**ChatGPT Response**")
                     with st.container(border=True):
+                        combine_sections = combine_sections.replace('\n', '\n\n')
                         st.write(combine_sections)
                         # st.code(combine_sections, language="python", line_numbers=False)
 
