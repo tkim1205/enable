@@ -201,14 +201,28 @@ def main():
                 st.success('Done!')
                 
                 st.markdown('#')
-                with st.expander("original extracted text"):
-                    st.code(original_text, language="python", line_numbers=False)
+                col1, col2 = st.columns(2)
 
-                st.markdown('#')
-                st.write("**ChatGPT Response**")
-                with st.container(border=True):
-                    # st.write(combine_sections_formatted)
-                    st.code(combine_sections, language="python", line_numbers=False)
+                with col1:
+                    st.write("**Extracted Text**")
+                    with st.container(border=True):
+                        # st.write(combine_sections_formatted)
+                        st.code(original_text, language="python", line_numbers=False)
+
+                with col2:
+                    st.write("**ChatGPT Response**")
+                    with st.container(border=True):
+                        # st.write(combine_sections_formatted)
+                        st.code(combine_sections, language="python", line_numbers=False)
+
+                # with st.expander("original extracted text"):
+                #     st.code(original_text, language="python", line_numbers=False)
+
+                # st.markdown('#')
+                # st.write("**ChatGPT Response**")
+                # with st.container(border=True):
+                #     # st.write(combine_sections_formatted)
+                #     st.code(combine_sections, language="python", line_numbers=False)
             
             elif pdf_file is None:
                 st.write("Please choose a valid PDF file")
