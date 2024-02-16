@@ -203,8 +203,8 @@ def main():
                 st.markdown('#')
                 col1, col2 = st.columns(2)
 
-                original_text_new = original_text.replace('\n•', '+').replace('\n', '  \n')
-                combine_sections_new = combine_sections.replace('\n•', '+').replace('\n', '  \n')
+                original_text_new = original_text.replace('•\n', '+').replace('\n', '  \n')
+                combine_sections_new = combine_sections.replace('•', '+').replace('\n', '  \n')
 
                 with col1:
                     st.write("**Extracted Text**")
