@@ -200,20 +200,11 @@ def main():
                 # Done
                 st.success('Done!')
                 
-                # Replace double '\n\n' with a placeholder
-                original_text_temp = original_text.replace('\n\n', 'TEMP_PLACEHOLDER')
-                combine_sections_temp = combine_sections.replace('\n\n', 'TEMP_PLACEHOLDER')
-                
-                # Replace single '\n' with '\n\n'
-                original_text_temp = original_text_temp.replace('\n', '\n\n')
-                combine_sections_temp = combine_sections_temp.replace('\n', '\n\n')
-
-                # Replace placeholder with '\n\n\n'
-                original_text_formatted = original_text_temp.replace('TEMP_PLACEHOLDER', '\n\n\n')
-                combine_sections_formatted = combine_sections_temp.replace('TEMP_PLACEHOLDER', '\n\n\n')
-
                 st.markdown('#')
                 col1, col2 = st.columns(2)
+
+                original_text.replace('\n', '  \n')
+                combine_sections.replace('\n', '  \n')
 
                 with col1:
                     st.write("**Extracted Text**")
@@ -228,6 +219,18 @@ def main():
                         # st.write(combine_sections_formatted)
                         st.markdown("```\n"+ combine_sections + "\n```")
                         # st.code(combine_sections, language="python", line_numbers=False)
+
+
+                col3, col4 = st.columns(2)
+                with col3:
+                    st.write("**Extracted Text**")
+                    with st.container(border=True):
+                        st.write(original_text)
+
+                with col4:
+                    st.write("**ChatGPT Response**")
+                    with st.container(border=True):
+                        st.write(combine_sections)
 
                 # with st.expander("original extracted text"):
                 #     st.code(original_text, language="python", line_numbers=False)
