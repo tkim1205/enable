@@ -203,19 +203,17 @@ def main():
                 st.markdown('#')
                 col1, col2 = st.columns(2)
 
-                original_text_new = original_text.replace('\n', '  \n')
-                combine_sections_new = combine_sections.replace('\n', '  \n')
+                original_text_new = original_text.replace('•', '+').replace('\n', '  \n')
+                combine_sections_new = combine_sections.replace('•', '+').replace('\n', '  \n')
 
                 with col1:
                     st.write("**Extracted Text**")
                     with st.container(border=True):
-                        st.markdown(original_text)
                         st.markdown(original_text_new)
 
                 with col2:
                     st.write("**ChatGPT Response**")
                     with st.container(border=True):
-                        st.markdown(combine_sections)
                         st.markdown(combine_sections_new)
             
             elif pdf_file is None:
