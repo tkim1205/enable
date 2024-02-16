@@ -209,43 +209,12 @@ def main():
                 with col1:
                     st.write("**Extracted Text**")
                     with st.container(border=True):
-                        # st.write(original_text_formatted)
-                        st.markdown(original_text)
-                        st.markdown("```\n"+ original_text + "\n```")
                         st.markdown(original_text_new)
-                        st.markdown("```\n"+ original_text_new + "\n```")
-                        # st.code(original_text, language="python", line_numbers=False)
 
                 with col2:
                     st.write("**ChatGPT Response**")
                     with st.container(border=True):
-                        # st.write(combine_sections_formatted)
-                        st.markdown(combine_sections)
-                        st.markdown("```\n"+ combine_sections + "\n```")
                         st.markdown(combine_sections_new)
-                        st.markdown("```\n"+ combine_sections_new + "\n```")
-                        # st.code(combine_sections, language="python", line_numbers=False)
-
-
-                col3, col4 = st.columns(2)
-                with col3:
-                    st.write("**Extracted Text**")
-                    with st.container(border=True):
-                        st.write(original_text_new)
-
-                with col4:
-                    st.write("**ChatGPT Response**")
-                    with st.container(border=True):
-                        st.write(combine_sections_new)
-
-                # with st.expander("original extracted text"):
-                #     st.code(original_text, language="python", line_numbers=False)
-
-                # st.markdown('#')
-                # st.write("**ChatGPT Response**")
-                # with st.container(border=True):
-                #     # st.write(combine_sections_formatted)
-                #     st.code(combine_sections, language="python", line_numbers=False)
             
             elif pdf_file is None:
                 st.write("Please choose a valid PDF file")
