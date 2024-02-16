@@ -207,12 +207,12 @@ def main():
                 combine_sections_new = combine_sections.replace('•', '+').replace('\n', '  \n')
 
                 with col1:
-                    st.write("**Extracted Text**")
+                    st.write("**Original Text**")
                     with st.container(border=True):
                         st.markdown(original_text_new)
 
                 with col2:
-                    st.write("**ChatGPT Response**")
+                    st.write("**Rewordified Text**")
                     with st.container(border=True):
                         st.markdown(combine_sections_new)
             
