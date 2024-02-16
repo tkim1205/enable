@@ -206,14 +206,14 @@ def main():
                 with col1:
                     st.write("**Extracted Text**")
                     with st.container(border=True):
-                        # st.write(combine_sections_formatted)
-                        st.code(original_text, language="python", line_numbers=False)
+                        st.write(original_text)
+                        # st.code(original_text, language="python", line_numbers=False)
 
                 with col2:
                     st.write("**ChatGPT Response**")
                     with st.container(border=True):
-                        # st.write(combine_sections_formatted)
-                        st.code(combine_sections, language="python", line_numbers=False)
+                        st.write(combine_sections)
+                        # st.code(combine_sections, language="python", line_numbers=False)
 
                 # with st.expander("original extracted text"):
                 #     st.code(original_text, language="python", line_numbers=False)
