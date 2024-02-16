@@ -137,36 +137,36 @@ def main():
                     original_text = ''
 
                     # Summary
-                    reworded_summary_section = util_v2.reword_section_text(st.secrets["api_key"], model, summary_prompt, 'Summary', summary_section)
-                    original_text += '**Summary:**\n' + summary_section
+                    reworded_summary_section = util_v2.reword_section_text(st.secrets["api_key"], model, summary_prompt, '**Summary**', summary_section)
+                    original_text += '**Summary**:\n' + summary_section
                     
                     # Past Medical/Family History
                     if util_v2.is_na_string(past_medical_section) == True and util_v2.is_na_string(familiy_history_section) == True:
-                        reworded_past_medical_family_history_section = 'Past Medical/Family History:\nN/A'
-                        original_text += '\n\nPast Medical/Family History:\nN/A'
+                        reworded_past_medical_family_history_section = '**Past Medical/Family History**:\nN/A'
+                        original_text += '\n\n**Past Medical/Family History**:\nN/A'
                     else:
                         past_medical_family_history_combined = ''
                         if util_v2.is_na_string(past_medical_section) == False:
                             past_medical_family_history_combined = past_medical_section
                         if util_v2.is_na_string(familiy_history_section) == False:
                             past_medical_family_history_combined = past_medical_family_history_combined + '\n' + familiy_history_section
-                        reworded_past_medical_family_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, past_medical_prompt, 'Past Medical/Family History', past_medical_family_history_combined)
-                        original_text += '\n\nPast Medical/Family History:\n' + past_medical_family_history_combined
+                        reworded_past_medical_family_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, past_medical_prompt, '**Past Medical/Family History**', past_medical_family_history_combined)
+                        original_text += '\n\n**Past Medical/Family History**:\n' + past_medical_family_history_combined
                     
                     # Surgical History
-                    reworded_surgical_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, surgical_history_prompt, 'Surgical History', surgical_history_section)
-                    original_text += '\n\nSurgical History:\n' + surgical_history_section
+                    reworded_surgical_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, surgical_history_prompt, '**Surgical History**', surgical_history_section)
+                    original_text += '\n\n**Surgical History**:\n' + surgical_history_section
                     
                     # Current Medication
-                    reworded_current_medication_section = util_v2.reword_section_text(st.secrets["api_key"], model, current_medication_prompt, 'Current Medication', current_medications_section)
-                    original_text += '\n\nCurrent Medication:\n' + current_medications_section
+                    reworded_current_medication_section = util_v2.reword_section_text(st.secrets["api_key"], model, current_medication_prompt, '**Current Medication**', current_medications_section)
+                    original_text += '\n\n**Current Medication**:\n' + current_medications_section
 
                     # Allergies
-                    reworded_allergies_section = util_v2.reword_section_text(st.secrets["api_key"], model, allergies_prompt, 'Allergies', allergies_section)
-                    original_text += '\n\nAllergies:\n' + allergies_section
+                    reworded_allergies_section = util_v2.reword_section_text(st.secrets["api_key"], model, allergies_prompt, '**Allergies**', allergies_section)
+                    original_text += '\n\n**Allergies**:\n' + allergies_section
 
                     # Social History
-                    original_text += '\n\nSocial History:\n' + social_history_section
+                    original_text += '\n\n**Social History**:\n' + social_history_section
                     # Remove PII
                     if len(occupation_text) > 0 and util_v2.contains_pii(occupation_text) == False:
                         social_history_section = social_history_section.replace(occupation_text, "<occupation>")
@@ -177,7 +177,7 @@ def main():
                     if len(name_text) > 0:
                         social_history_section = social_history_section.replace(name_text, "<name>")
                     # Reword
-                    reworded_social_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, social_history_prompt, 'Social History', social_history_section)
+                    reworded_social_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, social_history_prompt, '**Social History**', social_history_section)
                     # Readd PII
                     if len(occupation_text) > 0 and util_v2.contains_pii(occupation_text) == False:
                         reworded_social_history_section = reworded_social_history_section.replace("<occupation>", occupation_text)
@@ -189,8 +189,8 @@ def main():
                         reworded_social_history_section = reworded_social_history_section.replace("<name>", name_text)
                     
                     # Functional History
-                    reworded_functional_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, functional_history_prompt, 'Functional History', functional_history_section)
-                    original_text += '\n\nFunctional History:\n' + functional_history_section
+                    reworded_functional_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, functional_history_prompt, '**Functional History**', functional_history_section)
+                    original_text += '\n\n**Functional History**:\n' + functional_history_section
                     
                     ##################################################
                     # Combine Sections
@@ -203,8 +203,8 @@ def main():
                 st.markdown('#')
                 col1, col2 = st.columns(2)
 
-                original_text_new = original_text.replace('•', '+').replace('\n', '  \n')
-                combine_sections_new = combine_sections.replace('•', '+').replace('\n', '  \n')
+                original_text_new = original_text.replace('\n•', '+').replace('\n', '  \n')
+                combine_sections_new = combine_sections.replace('\n•', '+').replace('\n', '  \n')
 
                 with col1:
                     st.write("**Extracted Text**")
