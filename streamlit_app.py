@@ -186,12 +186,6 @@ def main():
                     # Combine Sections
                     #################################################
                     combine_sections = reworded_summary_section +'\n\n'+ reworded_past_medical_family_history_section +'\n\n'+ reworded_surgical_history_section +'\n\n'+ reworded_current_medication_section +'\n\n'+ reworded_allergies_section +'\n\n'+ reworded_social_history_section +'\n\n'+ reworded_functional_history_section
-                    
-                    # Due to bug in Streamlit where it's not showing \n properly, we have to add a space.
-                    # https://discuss.streamlit.io/t/multiline-text-in-chat-message-interface/52414/4
-                    combine_sections_formatted = ''
-                    for chunk in re.split(r'(\s+)', combine_sections):
-                        combine_sections_formatted += chunk + " "
 
                 # Done
                 st.success('Done!')
