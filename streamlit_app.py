@@ -16,7 +16,7 @@ def main():
     ##################################################
     # Logo
     ##################################################
-    st.image('rewordify-logo.jpg')
+    st.image('rewordify-logo.png')
 
     ##################################################
     # Model
@@ -80,7 +80,7 @@ def main():
             disabled=False,
             label_visibility="visible"
         )
-        functional_history = st.text_area(
+        functional_history_prompt = st.text_area(
             '**Functional History Prompt**',
             "Reword this to read more fluidly. keep it medically professional",
             height=20,
@@ -180,7 +180,7 @@ def main():
                         reworded_social_history_section = reworded_social_history_section.replace("<name>", name_text)
                     
                     # Functional History
-                    reworded_functional_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, functional_history, 'Functional History', functional_history_section)
+                    reworded_functional_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, functional_history_prompt, 'Functional History', functional_history_section)
                     
                     ##################################################
                     # Combine Sections
