@@ -194,7 +194,7 @@ def main():
                     
                     ##################################################
                     # Combine Sections
-                    #################################################
+                    ##################################################
                     combine_sections = reworded_summary_section +'\n\n'+ reworded_past_medical_family_history_section +'\n\n'+ reworded_surgical_history_section +'\n\n'+ reworded_current_medication_section +'\n\n'+ reworded_allergies_section +'\n\n'+ reworded_social_history_section +'\n\n'+ reworded_functional_history_section
 
                 # Done
@@ -218,13 +218,15 @@ def main():
                 with col1:
                     st.write("**Extracted Text**")
                     with st.container(border=True):
-                        st.write(original_text_formatted)
+                        # st.write(original_text_formatted)
+                        st.markdown("```\n"+ original_text + "\n```")
                         # st.code(original_text, language="python", line_numbers=False)
 
                 with col2:
                     st.write("**ChatGPT Response**")
                     with st.container(border=True):
-                        st.write(combine_sections_formatted)
+                        # st.write(combine_sections_formatted)
+                        st.markdown("```\n"+ combine_sections + "\n```")
                         # st.code(combine_sections, language="python", line_numbers=False)
 
                 # with st.expander("original extracted text"):
