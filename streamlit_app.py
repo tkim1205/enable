@@ -47,6 +47,7 @@ def main():
     default_functional_history_prompt = util_v2.load_default_text("functional_history_prompt")
 
     with st.expander("display prompts"):
+        # summary_prompt
         summary_prompt = st.text_area(
             '**Summary Prompt**',
             default_summary_prompt,
@@ -54,17 +55,10 @@ def main():
             disabled=False,
             label_visibility="visible"
         )
-        summary_prompt_col1, summary_prompt_col2 = st.columns([.036,1])
-        with summary_prompt_col1:
-            # Button to save the modified text as the new default
-            if st.button("Save"):
-                util_v2.save_default_text("summary_prompt", summary_prompt)
-        with summary_prompt_col2:
-            # Button to reset text area to the original default text
-            if st.button("Reset"):
-                orig_summary_prompt = util_v2.reset_default_text("summary_prompt")
-                util_v2.save_default_text("summary_prompt", orig_summary_prompt)
+        if st.button("Save"):
+            util_v2.save_default_text("summary_prompt", summary_prompt)
 
+        # past_medical_prompt
         past_medical_prompt = st.text_area(
             '**Past Medical/Family History Prompt**',
             default_past_medical_prompt,
@@ -72,6 +66,10 @@ def main():
             disabled=False,
             label_visibility="visible"
         )
+        if st.button("Save"):
+            util_v2.save_default_text("past_medical_prompt", past_medical_prompt)
+
+        # surgical_history_prompt
         surgical_history_prompt = st.text_area(
             '**Surgical History Prompt**',
             default_surgical_history_prompt,
@@ -79,6 +77,10 @@ def main():
             disabled=False,
             label_visibility="visible"
         )
+        if st.button("Save"):
+            util_v2.save_default_text("surgical_history_prompt", surgical_history_prompt)
+
+        # current_medication_prompt
         current_medication_prompt = st.text_area(
             '**Current Medication Prompt**',
             default_current_medication_prompt,
@@ -86,6 +88,10 @@ def main():
             disabled=False,
             label_visibility="visible"
         )
+        if st.button("Save"):
+            util_v2.save_default_text("current_medication_prompt", current_medication_prompt)
+
+        # allergies_prompt
         allergies_prompt = st.text_area(
             '**Allergies Prompt**',
             default_allergies_prompt,
@@ -93,6 +99,10 @@ def main():
             disabled=False,
             label_visibility="visible"
         )
+        if st.button("Save"):
+            util_v2.save_default_text("allergies_prompt", allergies_prompt)
+
+        # social_history_prompt
         social_history_prompt = st.text_area(
             '**Social History Prompt**',
             default_social_history_prompt,
@@ -100,6 +110,10 @@ def main():
             disabled=False,
             label_visibility="visible"
         )
+        if st.button("Save"):
+            util_v2.save_default_text("social_history_prompt", social_history_prompt)
+
+        # functional_history_prompt
         functional_history_prompt = st.text_area(
             '**Functional History Prompt**',
             default_functional_history_prompt,
@@ -107,6 +121,8 @@ def main():
             disabled=False,
             label_visibility="visible"
         )
+        if st.button("Save"):
+            util_v2.save_default_text("functional_history_prompt", functional_history_prompt)
 
     ##################################################
     # Rewordify Action Button
