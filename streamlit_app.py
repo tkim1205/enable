@@ -236,7 +236,6 @@ def main():
                 col1, col2 = st.columns(2)
                 with tab1:                
                     with col1:
-                        st.markdown('#')
                         st.write("**Original Text**")
                         with st.container(border=True):
                             st.markdown(original_text_new)
@@ -248,7 +247,6 @@ def main():
 
                 with tab2:                
                     with col1:
-                        st.markdown('#')
                         st.write("**Original Text**")
                         with st.container(border=True):
                             st.markdown(original_text_new)
