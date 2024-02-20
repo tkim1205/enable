@@ -243,7 +243,8 @@ def main():
                     with st.container(border=True):
                         st.markdown(combine_sections_new)
                     if st.button('Copy'):
-                        pyperclip.copy(combine_sections.replace('**', ''))
+                        combine_sections_copy = combine_sections.replace('**', '')
+                        pyperclip.copy(combine_sections_copy)
             
             elif pdf_file is None:
                 st.write("Please choose a valid PDF file")
