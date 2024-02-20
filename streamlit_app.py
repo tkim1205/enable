@@ -3,6 +3,7 @@ import streamlit as st
 import fitz
 import util_v2
 import re
+import pyperclip
 
 st.set_page_config(page_title="enable rewordify", page_icon="🦄", layout="wide")
 
@@ -243,8 +244,9 @@ def main():
                         st.markdown(combine_sections_new)
 
                     st.write("**Rewordified Text - Raw**")
-                    with st.container(border=True):
-                        st.code(combine_sections.replace('**', ''), language='python')
+
+                    if st.button('Copy')
+                        pyperclip.copy(combine_sections.replace('**', '')
             
             elif pdf_file is None:
                 st.write("Please choose a valid PDF file")
