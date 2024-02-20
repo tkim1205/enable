@@ -38,13 +38,13 @@ def main():
     ##################################################
     st.markdown('#')
     
-    default_summary_prompt = util_v2.load_default_text(summary_prompt)
-    default_past_medical_prompt = util_v2.load_default_text(past_medical_prompt)
-    default_surgical_history_prompt = util_v2.load_default_text(surgical_history_prompt)
-    default_current_medication_prompt = util_v2.load_default_text(current_medication_prompt)
-    default_allergies_prompt = util_v2.load_default_text(allergies_prompt)
-    default_social_history_prompt = util_v2.load_default_text(social_history_prompt)
-    default_functional_history_prompt = util_v2.load_default_text(functional_history_prompt)
+    default_summary_prompt = util_v2.load_default_text("summary_prompt")
+    default_past_medical_prompt = util_v2.load_default_text("past_medical_prompt")
+    default_surgical_history_prompt = util_v2.load_default_text("surgical_history_prompt")
+    default_current_medication_prompt = util_v2.load_default_text("current_medication_prompt")
+    default_allergies_prompt = util_v2.load_default_text("allergies_prompt")
+    default_social_history_prompt = util_v2.load_default_text("social_history_prompt")
+    default_functional_history_prompt = util_v2.load_default_text("functional_history_prompt")
 
     with st.expander("display prompts"):
         summary_prompt = st.text_area(
