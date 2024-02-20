@@ -230,7 +230,9 @@ def main():
                 
                 original_text_new = original_text.replace('•\n', '+ ').replace('\n', '  \n')
                 combine_sections_new = combine_sections.replace('•', '+').replace('\n', '  \n')
-                combine_sections_copy = combine_sections.replace('**', '')
+
+                original_text_raw = original_text_new.replace('**', '')
+                combine_sections_raw = combine_sections.replace('**', '')
 
                 tab1, tab2 = st.tabs(["Formatted", "Raw"])
                 
@@ -251,14 +253,14 @@ def main():
                     col1, col2 = st.columns(2)             
 
                     with col1:
-                        st.write("**Original Text**")
+                        st.write("**Original Text (Raw)**")
                         with st.container(border=True):
-                            st.code(original_text_new, language=None)
+                            st.code(original_text_raw, language=None)
 
                     with col2:
                         st.write("**Rewordified Text (Raw)**")
                         with st.container(border=True):
-                            st.code(combine_sections_copy, language=None)
+                            st.code(combine_sections_raw, language=None)
 
             elif pdf_file is None:
                 st.write("Please choose a valid PDF file")
