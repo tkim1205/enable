@@ -234,7 +234,6 @@ def main():
 
                 with col1:
                     st.markdown('#')
-                    st.markdown('#')
                     st.write("**Original Text**")
                     with st.container(border=True):
                         st.markdown(original_text_new)
