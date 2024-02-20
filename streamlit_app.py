@@ -244,7 +244,7 @@ def main():
 
                     st.write("**Rewordified Text - Raw**")
                     with st.container(border=True):
-                        st.code(combine_sections, language='python')
+                        st.code(combine_sections.replace('**', ''), language='python')
             
             elif pdf_file is None:
                 st.write("Please choose a valid PDF file")
