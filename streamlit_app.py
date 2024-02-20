@@ -239,7 +239,7 @@ def main():
                         st.markdown(original_text_new)
 
                 with col2:
-                    tab1, tab2 = st.tabs(["Formatted)", "Raw)"])
+                    tab1, tab2 = st.tabs(["Formatted)", "Raw"])
                     combine_sections_copy = combine_sections.replace('**', '')
 
                     with tab1:
