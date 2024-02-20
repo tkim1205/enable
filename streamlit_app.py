@@ -54,7 +54,7 @@ def main():
             disabled=False,
             label_visibility="visible"
         )
-        summary_prompt_col1, summary_prompt_col2 = st.columns([.05,1])
+        summary_prompt_col1, summary_prompt_col2 = st.columns([.04,1])
         with summary_prompt_col1:
             # Button to save the modified text as the new default
             if st.button("Save"):
