@@ -242,9 +242,15 @@ def main():
                     st.write("**Rewordified Text**")
                     with st.container(border=True):
                         st.markdown(combine_sections_new)
-                    if st.button('Copy'):
-                        combine_sections_copy = combine_sections.replace('**', '')
-                        pyperclip.copy(combine_sections_copy)
+
+                    combine_sections_copy = combine_sections.replace('**', '')
+
+                    st.write("**Rewordified Text (Raw)**")
+                    with st.container(border=True):
+                        st.code(combine_sections_copy)
+
+                    # if st.button('Copy'):
+                    #     pyperclip.copy(combine_sections_copy)
             
             elif pdf_file is None:
                 st.write("Please choose a valid PDF file")
