@@ -189,8 +189,12 @@ def main():
                         reworded_social_history_section = reworded_social_history_section.replace("<name>", name_text)
                     
                     # Functional History
-                    reworded_functional_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, functional_history_prompt, '**Functional History**', functional_history_section)
-                    original_text += '\n\n**Functional History**:\n' + functional_history_section
+                    if util_v2.is_na_string(functional_history_section) == True:
+                        reworded_past_medical_family_history_section = '**Functional History**:\nN/A'
+                        original_text += '\n\n**Functional History**:\nN/A'
+                    else:
+                        reworded_functional_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, functional_history_prompt, '**Functional History**', functional_history_section)
+                        original_text += '\n\n**Functional History**:\n' + functional_history_section
                     
                     ##################################################
                     # Combine Sections
