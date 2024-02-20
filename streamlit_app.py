@@ -233,12 +233,9 @@ def main():
                 combine_sections_new = combine_sections.replace('•', '+').replace('\n', '  \n')
 
                 with col1:
-                    tab0 = st.tabs(["Original Text"])
-
-                    with tab0:
-                        #st.write("**Original Text**")
-                        with st.container(border=True):
-                            st.markdown(original_text_new)
+                    st.write("**Original Text**")
+                    with st.container(border=True):
+                        st.markdown(original_text_new)
 
                 with col2:
                     tab1, tab2 = st.tabs(["Rewordified (formatted)", "Rewordified (raw)"])
