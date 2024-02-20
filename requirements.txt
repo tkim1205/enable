@@ -1,4 +1,4 @@
 PyPDF2
 openai
 PyMuPDF # instead of fitz
-pyperclip
+clipboard
