@@ -233,8 +233,10 @@ def main():
                 combine_sections_copy = combine_sections.replace('**', '')
 
                 tab1, tab2 = st.tabs(["Formatted", "Raw"])
-                col1, col2 = st.columns(2)
+                
                 with tab1:                
+                    col1, col2 = st.columns(2)
+
                     with col1:
                         st.write("**Original Text**")
                         with st.container(border=True):
@@ -245,11 +247,13 @@ def main():
                         with st.container(border=True):
                             st.markdown(combine_sections_new)
 
-                with tab2:                
+                with tab2:  
+                    col1, col2 = st.columns(2)             
+
                     with col1:
                         st.write("**Original Text**")
                         with st.container(border=True):
-                            st.markdown(original_text_new)
+                            st.code(original_text_new, language=None)
 
                     with col2:
                         st.write("**Rewordified Text (Raw)**")
