@@ -227,26 +227,33 @@ def main():
                 st.success('Done!')
                 
                 st.markdown('#')
-                col1, col2 = st.columns(2)
-
+                
                 original_text_new = original_text.replace('•\n', '+ ').replace('\n', '  \n')
                 combine_sections_new = combine_sections.replace('•', '+').replace('\n', '  \n')
+                combine_sections_copy = combine_sections.replace('**', '')
 
-                with col1:
-                    st.markdown('#')
-                    st.write("**Original Text**")
-                    with st.container(border=True):
-                        st.markdown(original_text_new)
+                tab1, tab2 = st.tabs(["Formatted", "Raw"])
+                col1, col2 = st.columns(2)
+                with tab1:                
+                    with col1:
+                        st.markdown('#')
+                        st.write("**Original Text**")
+                        with st.container(border=True):
+                            st.markdown(original_text_new)
 
-                with col2:
-                    tab1, tab2 = st.tabs(["Formatted)", "Raw"])
-                    combine_sections_copy = combine_sections.replace('**', '')
-
-                    with tab1:
+                    with col2:
                         st.write("**Rewordified Text**")
                         with st.container(border=True):
                             st.markdown(combine_sections_new)
-                    with tab2:
+
+                with tab2:                
+                    with col1:
+                        st.markdown('#')
+                        st.write("**Original Text**")
+                        with st.container(border=True):
+                            st.markdown(original_text_new)
+
+                    with col2:
                         st.write("**Rewordified Text (Raw)**")
                         with st.container(border=True):
                             st.code(combine_sections_copy, language=None)
