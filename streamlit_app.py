@@ -239,17 +239,17 @@ def main():
 
                 with col2:
 
-                    raw_text = st.toggle('Show raw text')
+                    tab1, tab2 = st.tabs(["Formatted", "Raw"])
                     combine_sections_copy = combine_sections.replace('**', '')
 
-                    if raw_text:
-                        st.write("**Rewordified Text (Raw)**")
-                        with st.container(border=True):
-                            st.code(combine_sections_copy, language=None)
-                    else:
+                    with tab1:
                         st.write("**Rewordified Text**")
                         with st.container(border=True):
                             st.markdown(combine_sections_new)
+                    with tab2:
+                        st.write("**Rewordified Text (Raw)**")
+                        with st.container(border=True):
+                            st.code(combine_sections_copy, language=None)
 
             elif pdf_file is None:
                 st.write("Please choose a valid PDF file")
