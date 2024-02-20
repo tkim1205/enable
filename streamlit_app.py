@@ -238,15 +238,18 @@ def main():
                         st.markdown(original_text_new)
 
                 with col2:
-                    st.write("**Rewordified Text**")
-                    with st.container(border=True):
-                        st.markdown(combine_sections_new)
 
+                    raw_text = st.toggle('Show raw text')
                     combine_sections_copy = combine_sections.replace('**', '')
 
-                    st.write("**Rewordified Text (Raw)**")
-                    with st.container(border=True):
-                        st.code(combine_sections_copy, language=None)
+                    if raw_text:
+                        st.write("**Rewordified Text (Raw)**")
+                        with st.container(border=True):
+                            st.code(combine_sections_copy, language=None)
+                    else:
+                        st.write("**Rewordified Text**")
+                        with st.container(border=True):
+                            st.markdown(combine_sections_new)
 
             elif pdf_file is None:
                 st.write("Please choose a valid PDF file")
