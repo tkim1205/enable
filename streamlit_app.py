@@ -245,7 +245,7 @@ def main():
 
                     st.write("**Rewordified Text - Raw**")
 
-                    if st.button('Copy')
+                    if st.button('Copy'):
                         pyperclip.copy(combine_sections.replace('**', '')
             
             elif pdf_file is None:
