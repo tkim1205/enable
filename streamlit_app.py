@@ -37,52 +37,61 @@ def main():
     # Display Prompts
     ##################################################
     st.markdown('#')
+    
+    default_summary_prompt = util_v2.load_default_text(summary_prompt)
+    default_past_medical_prompt = util_v2.load_default_text(past_medical_prompt)
+    default_surgical_history_prompt = util_v2.load_default_text(surgical_history_prompt)
+    default_current_medication_prompt = util_v2.load_default_text(current_medication_prompt)
+    default_allergies_prompt = util_v2.load_default_text(allergies_prompt)
+    default_social_history_prompt = util_v2.load_default_text(social_history_prompt)
+    default_functional_history_prompt = util_v2.load_default_text(functional_history_prompt)
+
     with st.expander("display prompts"):
         summary_prompt = st.text_area(
             '**Summary Prompt**',
-            "Every time I enter text, act as a consultant neurologist. Use the text to summarize the patient's presenting complaint in a professional manner that would be suitable to communicate to other physicians. Write in paragraphs. ONLY SUMMARIZE THE GIVEN INFORMATION. Do not indicate or suggest that further evaluation or investigation is needed",
+            default_summary_prompt,
             height=120,
             disabled=False,
             label_visibility="visible"
         )
         past_medical_prompt = st.text_area(
             '**Past Medical/Family History Prompt**',
-            "Reword the following in point form to use medical terminology",
+            default_past_medical_prompt,
             height=20,
             disabled=False,
             label_visibility="visible"
         )
         surgical_history_prompt = st.text_area(
             '**Surgical History Prompt**',
-            "Reword this to read more fluidly. keep it medically professional",
+            default_surgical_history_prompt,
             height=20,
             disabled=False,
             label_visibility="visible"
         )
         current_medication_prompt = st.text_area(
             '**Current Medication Prompt**',
-            "Correct the spelling of the following medications and arrange them in point form. Do not state what the original spelling was. If an acronym was used, spell out the whole word",
+            default_current_medication_prompt,
             height=20,
             disabled=False,
             label_visibility="visible"
         )
         allergies_prompt = st.text_area(
             '**Allergies Prompt**',
-            "Reword this to read more fluidly. keep it medically professional",
+            default_allergies_prompt,
             height=20,
             disabled=False,
             label_visibility="visible"
         )
         social_history_prompt = st.text_area(
             '**Social History Prompt**',
-            "Reword this to read more fluidly. keep it medically professional",
+            default_social_history_prompt,
             height=20,
             disabled=False,
             label_visibility="visible"
         )
         functional_history_prompt = st.text_area(
             '**Functional History Prompt**',
-            "Reword this to read more fluidly. keep it medically professional",
+            default_functional_history_prompt,
             height=20,
             disabled=False,
             label_visibility="visible"
