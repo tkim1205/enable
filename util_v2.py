@@ -422,33 +422,3 @@ def load_default_text(section_header):
     with open(filename, "r") as file:
         default_text = file.read()
     return default_text
-
-def save_default_text(section_header, new_default_text):
-    """
-    Save the modified text as the new default text.
-
-    Parameters:
-    - section_header (str): The input string used to construct the filename.
-    - new_default_text (str): The modified text to be saved as the new default.
-
-    Returns:
-    - None
-    """
-    filename = f"prompts/default_{section_header}.txt"
-    with open(filename, "w") as file:
-        file.write(new_default_text)
-
-def reset_default_text(section_header):
-    """
-    Load the default text from the 'default_text.txt' file.
-
-    Parameters:
-    - section_header (str): The input string used to construct the filename.
-
-    Returns:
-    - str: The default text loaded from the file.
-    """
-    filename = f"prompts/orig_{section_header}.txt"
-    with open(filename, "r") as file:
-        default_text = file.read()
-    return default_text

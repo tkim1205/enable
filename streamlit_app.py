@@ -55,9 +55,6 @@ def main():
             disabled=False,
             label_visibility="visible"
         )
-        if st.button("Save Summary Prompt"):
-            util_v2.save_default_text("summary_prompt", summary_prompt)
-            st.success("New default prompt saved successfully!")
 
         # past_medical_prompt
         past_medical_prompt = st.text_area(
@@ -67,9 +64,6 @@ def main():
             disabled=False,
             label_visibility="visible"
         )
-        if st.button("Save Medical Prompt"):
-            util_v2.save_default_text("past_medical_prompt", past_medical_prompt)
-            st.success("New default prompt saved successfully!")
 
         # surgical_history_prompt
         surgical_history_prompt = st.text_area(
@@ -79,9 +73,6 @@ def main():
             disabled=False,
             label_visibility="visible"
         )
-        if st.button("Save Surgical Prompt"):
-            util_v2.save_default_text("surgical_history_prompt", surgical_history_prompt)
-            st.success("New default prompt saved successfully!")
 
         # current_medication_prompt
         current_medication_prompt = st.text_area(
@@ -91,9 +82,6 @@ def main():
             disabled=False,
             label_visibility="visible"
         )
-        if st.button("Save Medication Prompt"):
-            util_v2.save_default_text("current_medication_prompt", current_medication_prompt)
-            st.success("New default prompt saved successfully!")
 
         # allergies_prompt
         allergies_prompt = st.text_area(
@@ -103,9 +91,6 @@ def main():
             disabled=False,
             label_visibility="visible"
         )
-        if st.button("Save Allergies Prompt"):
-            util_v2.save_default_text("allergies_prompt", allergies_prompt)
-            st.success("New default prompt saved successfully!")
 
         # social_history_prompt
         social_history_prompt = st.text_area(
@@ -115,9 +100,6 @@ def main():
             disabled=False,
             label_visibility="visible"
         )
-        if st.button("Save Social Prompt"):
-            util_v2.save_default_text("social_history_prompt", social_history_prompt)
-            st.success("New default prompt saved successfully!")
 
         # functional_history_prompt
         functional_history_prompt = st.text_area(
@@ -127,9 +109,6 @@ def main():
             disabled=False,
             label_visibility="visible"
         )
-        if st.button("Save Functional Prompt"):
-            util_v2.save_default_text("functional_history_prompt", functional_history_prompt)
-            st.success("New default prompt saved successfully!")
 
     ##################################################
     # Rewordify Action Button
