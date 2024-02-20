@@ -54,6 +54,15 @@ def main():
             disabled=False,
             label_visibility="visible"
         )
+        # Button to save the modified text as the new default
+        if st.button("Save"):
+            util_v2.save_default_text("summary_prompt", summary_prompt)
+
+        # Button to reset text area to the original default text
+        if st.button("Reset"):
+            orig_summary_prompt = util_v2.reset_default_text("summary_prompt")
+            util_v2.save_default_text("summary_prompt", orig_summary_prompt)
+
         past_medical_prompt = st.text_area(
             '**Past Medical/Family History Prompt**',
             default_past_medical_prompt,
