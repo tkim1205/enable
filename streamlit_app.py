@@ -242,9 +242,6 @@ def main():
                     st.write("**Rewordified Text**")
                     with st.container(border=True):
                         st.markdown(combine_sections_new)
-
-                    st.write("**Rewordified Text - Raw**")
-
                     if st.button('Copy'):
                         pyperclip.copy(combine_sections.replace('**', '')
             
