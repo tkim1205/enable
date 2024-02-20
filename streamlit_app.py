@@ -3,7 +3,7 @@ import streamlit as st
 import fitz
 import util_v2
 import re
-import pyperclip
+import clipboard
 
 st.set_page_config(page_title="enable rewordify", page_icon="🦄", layout="wide")
 
@@ -249,8 +249,8 @@ def main():
                     with st.container(border=True):
                         st.code(combine_sections_copy)
 
-                    # if st.button('Copy'):
-                    #     pyperclip.copy(combine_sections_copy)
+                    if st.button('Copy'):
+                        clipboard.copy(combine_sections_copy)
             
             elif pdf_file is None:
                 st.write("Please choose a valid PDF file")
