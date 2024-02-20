@@ -241,6 +241,10 @@ def main():
                     st.write("**Rewordified Text**")
                     with st.container(border=True):
                         st.markdown(combine_sections_new)
+
+                st.markdown('#')
+                st.write("**Rewordified Text - Raw**")
+                st.code(combine_sections, language='python')
             
             elif pdf_file is None:
                 st.write("Please choose a valid PDF file")
