@@ -38,6 +38,7 @@ def main():
     ##################################################
     st.markdown('#')
     
+    default_hpi_prompt = util_v2.load_default_text("hpi_prompt")
     default_summary_prompt = util_v2.load_default_text("summary_prompt")
     default_past_medical_prompt = util_v2.load_default_text("past_medical_prompt")
     default_surgical_history_prompt = util_v2.load_default_text("surgical_history_prompt")
@@ -47,7 +48,26 @@ def main():
     default_social_history_prompt = util_v2.load_default_text("social_history_prompt")
     default_functional_history_prompt = util_v2.load_default_text("functional_history_prompt")
 
+    # History of Presenting Ilness - Text Box
+    hpi_raw_data = st.text_area(
+        '**History of Presenting Illness (raw data)**',
+        '',
+        height=120,
+        disabled=False,
+        label_visibility="visible"
+    )
+
+    # Prompt - Text Box
     with st.expander("display prompts"):
+        # hpi_prompt
+        hpi_prompt = st.text_area(
+            '**History of Presenting Illness Prompt**',
+            default_hpi_prompt,
+            height=120,
+            disabled=False,
+            label_visibility="visible"
+        )
+
         # summary_prompt
         summary_prompt = st.text_area(
             '**Summary Prompt**',
@@ -168,6 +188,10 @@ def main():
                     ##################################################
                     original_text = ''
 
+                    # HPI Summary
+                    reworded_hpi_section = util_v2.reword_section_text(st.secrets["api_key"], model, hpi_prompt, '**History of Presenting Illness**', hpi_raw_data)
+                    original_text += '**History of Presenting Illness**:\n' + hpi_raw_data
+
                     # Summary
                     reworded_summary_section = util_v2.reword_section_text(st.secrets["api_key"], model, summary_prompt, '**Summary**', summary_section)
                     original_text += '**Summary**:\n' + summary_section
@@ -227,7 +251,7 @@ def main():
                     ##################################################
                     # Combine Sections
                     ##################################################
-                    combine_sections = reworded_summary_section +'\n\n'+ reworded_past_medical_section +'\n\n'+ reworded_surgical_history_section +'\n\n'+ reworded_current_medication_section +'\n\n'+ reworded_allergies_section +'\n\n'+ reworded_family_history_section +'\n\n'+ reworded_social_history_section +'\n\n'+ reworded_functional_history_section
+                    combine_sections = reworded_hpi_section +'\n\n'+ reworded_summary_section +'\n\n'+ reworded_past_medical_section +'\n\n'+ reworded_surgical_history_section +'\n\n'+ reworded_current_medication_section +'\n\n'+ reworded_allergies_section +'\n\n'+ reworded_family_history_section +'\n\n'+ reworded_social_history_section +'\n\n'+ reworded_functional_history_section
 
                 # Done
                 st.success('Done!')
