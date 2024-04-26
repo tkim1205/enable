@@ -48,24 +48,26 @@ def main():
     default_family_history_prompt = util_v2.load_default_text("family_history_prompt")
     default_social_history_prompt = util_v2.load_default_text("social_history_prompt")
     default_functional_history_prompt = util_v2.load_default_text("functional_history_prompt")
+    
+    # Prompt - Text Box
+    with st.expander("display optional raw notes"):
+        # Questionaire - Text Box
+        questionaire_raw_data = st.text_area(
+            '**Questionaire: History of Presenting Illness (optional)**',
+            'N/A',
+            height=120,
+            disabled=False,
+            label_visibility="visible"
+        )
 
-    # Questionaire - Text Box
-    questionaire_raw_data = st.text_area(
-        '**Questionaire: History of Presenting Illness raw note (optional)**',
-        'N/A',
-        height=120,
-        disabled=False,
-        label_visibility="visible"
-    )
-
-    # ICBC - Text Box
-    icbc_raw_data = st.text_area(
-        '**ICBC/WBC raw note (optional)**',
-        'N/A',
-        height=120,
-        disabled=False,
-        label_visibility="visible"
-    )
+        # ICBC - Text Box
+        icbc_raw_data = st.text_area(
+            '**ICBC/WBC (optional)**',
+            'N/A',
+            height=120,
+            disabled=False,
+            label_visibility="visible"
+        )
 
     # Prompt - Text Box
     with st.expander("display prompts"):
