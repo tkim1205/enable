@@ -51,7 +51,7 @@ def main():
 
     # Questionaire - Text Box
     questionaire_raw_data = st.text_area(
-        '**Questionaire - History of Presenting Illness raw note (optional)**',
+        '**Questionaire: History of Presenting Illness raw note (optional)**',
         'N/A',
         height=120,
         disabled=False,
@@ -211,7 +211,7 @@ def main():
                     if util_v2.is_na_string(questionaire_raw_data) == True:
                         reworded_questionaire_section = ''
                     else:
-                        reworded_functional_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, questionaire_prompt, '**Questionaire Summary**', questionaire_raw_data)+'\n\n'
+                        reworded_questionaire_section = util_v2.reword_section_text(st.secrets["api_key"], model, questionaire_prompt, '**Questionaire Summary**', questionaire_raw_data)+'\n\n'
                         original_text += '**Questionaire Summary**:\n' + questionaire_raw_data +'\n\n'
 
                     # ICBC
