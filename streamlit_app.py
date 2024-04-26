@@ -39,6 +39,7 @@ def main():
     st.markdown('#')
     
     default_questionaire_prompt = util_v2.load_default_text("questionaire_prompt")
+    default_icbc_prompt = util_v2.load_default_text("icbc_prompt")
     default_summary_prompt = util_v2.load_default_text("summary_prompt")
     default_past_medical_prompt = util_v2.load_default_text("past_medical_prompt")
     default_surgical_history_prompt = util_v2.load_default_text("surgical_history_prompt")
@@ -50,7 +51,16 @@ def main():
 
     # Questionaire - Text Box
     questionaire_raw_data = st.text_area(
-        '**Questionaire - History of presenting illness (raw data)**',
+        '**Questionaire - History of Presenting Illness raw note (optional)**',
+        'N/A',
+        height=120,
+        disabled=False,
+        label_visibility="visible"
+    )
+
+    # ICBC - Text Box
+    icbc_raw_data = st.text_area(
+        '**ICBC/WBC raw note (optional)**',
         'N/A',
         height=120,
         disabled=False,
@@ -63,6 +73,15 @@ def main():
         questionaire_prompt = st.text_area(
             '**Questionaire Prompt**',
             default_questionaire_prompt,
+            height=120,
+            disabled=False,
+            label_visibility="visible"
+        )
+
+        # questionaire_prompt
+        icbc_prompt = st.text_area(
+            '**ICBC/WBC Prompt**',
+            default_icbc_prompt,
             height=120,
             disabled=False,
             label_visibility="visible"
@@ -188,10 +207,20 @@ def main():
                     ##################################################
                     original_text = ''
 
-                    # HPI Summary
-                    reworded_questionaire_section = util_v2.reword_section_text(st.secrets["api_key"], model, questionaire_prompt, '**Questionaire Summary**', questionaire_raw_data)
-                    original_text += '**Questionaire Summary**:\n' + questionaire_raw_data +'\n\n'
+                    # Questionaire
+                    if util_v2.is_na_string(questionaire_raw_data) == True:
+                        reworded_questionaire_section = ''
+                    else:
+                        reworded_functional_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, questionaire_prompt, '**Questionaire Summary**', questionaire_raw_data)+'\n\n'
+                        original_text += '**Questionaire Summary**:\n' + questionaire_raw_data +'\n\n'
 
+                    # ICBC
+                    if util_v2.is_na_string(icbc_raw_data) == True:
+                        reworded_icbc_section = ''
+                    else:
+                        reworded_icbc_section = util_v2.reword_section_text(st.secrets["api_key"], model, icbc_prompt, '**ICBC/WBC**', icbc_raw_data)+'\n\n'
+                        original_text += '**ICBC/WBC**:\n' + icbc_raw_data +'\n\n'
+                    
                     # Summary
                     reworded_summary_section = util_v2.reword_section_text(st.secrets["api_key"], model, summary_prompt, '**Summary**', summary_section)
                     original_text += '**Summary**:\n' + summary_section
@@ -251,7 +280,7 @@ def main():
                     ##################################################
                     # Combine Sections
                     ##################################################
-                    combine_sections = reworded_questionaire_section +'\n\n'+ reworded_summary_section +'\n\n'+ reworded_past_medical_section +'\n\n'+ reworded_surgical_history_section +'\n\n'+ reworded_current_medication_section +'\n\n'+ reworded_allergies_section +'\n\n'+ reworded_family_history_section +'\n\n'+ reworded_social_history_section +'\n\n'+ reworded_functional_history_section
+                    combine_sections = reworded_questionaire_section + reworded_icbc_section + reworded_summary_section +'\n\n'+ reworded_past_medical_section +'\n\n'+ reworded_surgical_history_section +'\n\n'+ reworded_current_medication_section +'\n\n'+ reworded_allergies_section +'\n\n'+ reworded_family_history_section +'\n\n'+ reworded_social_history_section +'\n\n'+ reworded_functional_history_section
 
                 # Done
                 st.success('Done!')
