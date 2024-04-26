@@ -190,7 +190,7 @@ def main():
 
                     # HPI Summary
                     reworded_questionaire_section = util_v2.reword_section_text(st.secrets["api_key"], model, questionaire_prompt, '**Questionaire Summary**', questionaire_raw_data)
-                    original_text += '**Questionaire Summary**:\n' + questionaire_raw_data
+                    original_text += '**Questionaire Summary**:\n' + questionaire_raw_data +'\n\n'
 
                     # Summary
                     reworded_summary_section = util_v2.reword_section_text(st.secrets["api_key"], model, summary_prompt, '**Summary**', summary_section)
