@@ -43,6 +43,7 @@ def main():
     default_surgical_history_prompt = util_v2.load_default_text("surgical_history_prompt")
     default_current_medication_prompt = util_v2.load_default_text("current_medication_prompt")
     default_allergies_prompt = util_v2.load_default_text("allergies_prompt")
+    default_family_history_prompt = util_v2.load_default_text("family_history_prompt")
     default_social_history_prompt = util_v2.load_default_text("social_history_prompt")
     default_functional_history_prompt = util_v2.load_default_text("functional_history_prompt")
 
@@ -58,7 +59,7 @@ def main():
 
         # past_medical_prompt
         past_medical_prompt = st.text_area(
-            '**Past Medical/Family History Prompt**',
+            '**Past Medical Prompt**',
             default_past_medical_prompt,
             height=20,
             disabled=False,
@@ -87,6 +88,15 @@ def main():
         allergies_prompt = st.text_area(
             '**Allergies Prompt**',
             default_allergies_prompt,
+            height=20,
+            disabled=False,
+            label_visibility="visible"
+        )
+
+        # family_history_prompt
+        family_history_prompt = st.text_area(
+            '**Family History Prompt**',
+            default_family_history_prompt,
             height=20,
             disabled=False,
             label_visibility="visible"
@@ -149,7 +159,7 @@ def main():
                     surgical_history_section = util_v2.extract_section_text(text_between_markers, "surgical history")
                     current_medications_section = util_v2.extract_section_text(text_between_markers, "current medications")
                     allergies_section = util_v2.extract_section_text(text_between_markers, "allergies")
-                    familiy_history_section = util_v2.extract_section_text(text_between_markers, "family history")
+                    family_history_section = util_v2.extract_section_text(text_between_markers, "family history")
                     social_history_section = util_v2.extract_section_text(text_between_markers, "social history")
                     functional_history_section = util_v2.extract_section_text(text_between_markers, "functional history")
                     
@@ -162,18 +172,9 @@ def main():
                     reworded_summary_section = util_v2.reword_section_text(st.secrets["api_key"], model, summary_prompt, '**Summary**', summary_section)
                     original_text += '**Summary**:\n' + summary_section
                     
-                    # Past Medical/Family History
-                    if util_v2.is_na_string(past_medical_section) == True and util_v2.is_na_string(familiy_history_section) == True:
-                        reworded_past_medical_family_history_section = '**Past Medical/Family History**:\nN/A'
-                        original_text += '\n\n**Past Medical/Family History**:\nN/A'
-                    else:
-                        past_medical_family_history_combined = ''
-                        if util_v2.is_na_string(past_medical_section) == False:
-                            past_medical_family_history_combined = past_medical_section
-                        if util_v2.is_na_string(familiy_history_section) == False:
-                            past_medical_family_history_combined = past_medical_family_history_combined + '\n' + familiy_history_section
-                        reworded_past_medical_family_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, past_medical_prompt, '**Past Medical/Family History**', past_medical_family_history_combined)
-                        original_text += '\n\n**Past Medical/Family History**:\n' + past_medical_family_history_combined
+                    # Past Medical
+                    reworded_past_medical_section = util_v2.reword_section_text(st.secrets["api_key"], model, past_medical_prompt, '**Past Medical**', past_medical_section)
+                    original_text += '\n\n**Past Medical**:\n' + past_medical_section
                     
                     # Surgical History
                     reworded_surgical_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, surgical_history_prompt, '**Surgical History**', surgical_history_section)
@@ -186,6 +187,11 @@ def main():
                     # Allergies
                     reworded_allergies_section = util_v2.reword_section_text(st.secrets["api_key"], model, allergies_prompt, '**Allergies**', allergies_section)
                     original_text += '\n\n**Allergies**:\n' + allergies_section
+
+                    # Family History
+                    reworded_family_history_section = util_v2.reword_section_text(st.secrets["api_key"], model, family_history_prompt, '**Family History**', family_history_section)
+                    original_text += '\n\n**Family History**:\n' + family_history_section
+                    
 
                     # Social History
                     original_text += '\n\n**Social History**:\n' + social_history_section
@@ -221,7 +227,7 @@ def main():
                     ##################################################
                     # Combine Sections
                     ##################################################
-                    combine_sections = reworded_summary_section +'\n\n'+ reworded_past_medical_family_history_section +'\n\n'+ reworded_surgical_history_section +'\n\n'+ reworded_current_medication_section +'\n\n'+ reworded_allergies_section +'\n\n'+ reworded_social_history_section +'\n\n'+ reworded_functional_history_section
+                    combine_sections = reworded_summary_section +'\n\n'+ reworded_past_medical_section +'\n\n'+ reworded_surgical_history_section +'\n\n'+ reworded_current_medication_section +'\n\n'+ reworded_allergies_section +'\n\n'+ reworded_family_history_section +'\n\n'+ reworded_social_history_section +'\n\n'+ reworded_functional_history_section
 
                 # Done
                 st.success('Done!')
