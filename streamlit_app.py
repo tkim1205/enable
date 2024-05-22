@@ -166,7 +166,7 @@ def main():
                     check_pdf = util_v2.check_required_headers_exist(txt_between_markers)
 
                     if check_pdf == False:
-                        st.error("Please ensure the PDF contains the required sections.")
+                        st.error("Invalid PDF detected. Please ensure the appropriate PDF containing the required sections is uploaded.")
                         return
 
                     # [Get Section Text]
