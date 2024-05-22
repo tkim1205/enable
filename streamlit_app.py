@@ -163,7 +163,11 @@ def main():
                     txt_between_markers = util_v2.extract_text_between_markers(pdf_txt, '[-enable start-]', '[-enable end-]')
                     
                     # [Raise exception if no text extracted]
+                    check_pdf = util_v2.check_required_headers_exist(txt_between_markers)
 
+                    if check_pdf == False:
+                        st.error("Please ensure the PDF contains the required sections.")
+                        return
 
                     # [Get Section Text]
                     summary_txt = util_v2.extract_summary_text(txt_between_markers)

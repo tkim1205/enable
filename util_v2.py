@@ -193,6 +193,33 @@ def extract_text_between_markers(pdf_text, start_marker, end_marker):
         return ""  # Return an empty string if no text is found between the markers
 
 
+def check_required_headers_exist(text):
+    """
+    Checks if at least 5 out of 7 specified headers are present in the given text string.
+
+    Parameters:
+    text (str): The text string to be checked.
+
+    Returns:
+    bool: True if at least 5 headers are found, False otherwise.
+    """
+    headers = [
+        "Past medical",
+        "Surgical history",
+        "Current medications",
+        "Allergies",
+        "Family History",
+        "Social History",
+        "Functional History"
+    ]
+
+    # Count the number of headers present in the text
+    headers_found = sum(1 for header in headers if header.lower() in text.lower())
+
+    # Return True if at least 5 headers are found, otherwise return False
+    return headers_found >= 5
+
+
 def extract_summary_text(text_between_markers):
     """
     Extract summary text, which is all text before the "Past Medical" section.
