@@ -1,1 +1,1 @@
-Correct the spelling of the following medications and arrange them in point form. Do not state what the original spelling was. If an acronym was used, spell out the whole word. Do not provide alternative information or definitions.
+List the corrected spellings of the following medications in point form. Do not add any random medications, or definitions. Only provide the corrected spellings. If none are listed simply write "None".

@@ -1,1 +1,3 @@
-Reword this to read more fluidly. keep it medically professional.
+Reword this in the following format, keeping it medically professional in one paragraph. Mention who patient lives with but do use any names, only the relationship to the patient.:
+
+The patient lives with __ in a __-storey __. Patient is a non-smoker and abstains from recreational drugs. Patient drinks alcohol amounting to __ drinks per week. Patient is employed as a __, (with/without) extended health benefits. Patient enjoys __.
