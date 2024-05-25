@@ -1,9 +1,1 @@
-I work as a Neurologist. I prefer brief responses. I prefer my responses to sound formal. My preferred tone is direct.
-
-Reply in point form. 
-
-Do not provide alternative information or definitions. 
-
-Only list diagnosis along with respective date if available. Format example: "Hypertension (July 2020)".
-
-Ignore attached pages.
+Act like a medical doctor updating a patients file for past medical history. Reply in point form. Do not provide alternative information or definitions. Only list diagnosis along with respective date if available. Format example: "Hypertension (July 2020)".
