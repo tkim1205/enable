@@ -357,7 +357,7 @@ def is_na_string(text):
     else:
         # Remove non-alphabetic characters using regular expression
         text_alpha = re.sub(r'[^a-zA-Z]', '', text)
-        na_patterns = ["no", "na", "n", ""]
+        na_patterns = ["none", "no", "na", "n", ""]
         return text_alpha.lower() in na_patterns
 
 
