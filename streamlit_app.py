@@ -19,7 +19,7 @@ def main():
     # [Select Box: Model]
     model = st.selectbox(
         "**ChatGPT Model**",
-        ("gpt-3.5-turbo", "gpt-4 (disabled)")
+        ("gpt-3.5-turbo", "gpt-4o")
         )
     st.markdown('#')   
 
