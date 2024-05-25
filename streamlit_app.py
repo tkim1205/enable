@@ -266,7 +266,7 @@ def main():
                 combine_sections_raw = combine_sections.replace('**', '')
 
                 # [Display Tabs to show Formatted or Raw text]
-                tab1, tab2, tab3 = st.tabs(["Formatted", "Raw", "Processed Prompts"])
+                tab1, tab2, tab3, tab4 = st.tabs(["Formatted", "Raw", "Processed Prompts", "Debug"])
                 
                 # Formatted Text
                 with tab1:                
@@ -339,6 +339,12 @@ def main():
                     st.write("**Functional History**")
                     with st.container(border=True):
                         st.markdown(functional_history_prompt + "\n\nText to reword:\n\n" + func_history_txt)                
+
+                # Debug
+                with tab4:
+                    st.write("**Text between markers**")
+                    with st.container(border=True):
+                        st.markdown(txt_between_markers)
 
             elif pdf_file is None:
                 st.write("Please choose a valid PDF file")
