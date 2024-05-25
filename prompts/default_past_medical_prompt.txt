@@ -5,3 +5,5 @@ Reply in point form.
 Do not provide alternative information or definitions. 
 
 Only list diagnosis along with respective date if available. Format example: "Hypertension (July 2020)".
+
+Ignore attached pages.

@@ -280,26 +280,6 @@ def extract_section_text(text_between_markers, section_header):
     return text_between_markers[start_index + len(section_header):end_index].strip()
 
 
-def reword_section_text(api_key, model, prompt, section_header, section_text):
-    """
-    Reword section text using ChatGPT
-
-    Parameters:
-    - prompt (str): The ChatGPT prompt.
-    - section_header (str): Section Header Text
-    - section_text (str): Section Text to be reworded
-
-    Returns:
-    - string: The reworded output from ChatPGT
-    """
-    if is_na_string(section_text) == True:
-        return f"{section_header}:\nN/A"
-    else:
-        chatgpt_prompt = "INSTRUCTIONS:\n\n" + prompt + "\n\nINFORMATION TO ASSESS:\n\n" + section_text + "\n\nTHERE ARE NO ATTACHED PAGES."
-        chatgpt_response = call_chatgpt(chatgpt_prompt, api_key, model)
-        return f"{section_header}:\n" + chatgpt_response
-
-
 def load_default_text(section_header):
     """
     Load the default text from the corresponding file.
@@ -390,3 +370,23 @@ def call_chatgpt(prompt, api_key, model):
 
     response_message = response.choices[0].message.content
     return response_message
+
+
+def reword_section_text(api_key, model, prompt, section_header, section_text):
+    """
+    Reword section text using ChatGPT
+
+    Parameters:
+    - prompt (str): The ChatGPT prompt.
+    - section_header (str): Section Header Text
+    - section_text (str): Section Text to be reworded
+
+    Returns:
+    - string: The reworded output from ChatPGT
+    """
+    if is_na_string(section_text) == True:
+        return f"{section_header}:\nN/A"
+    else:
+        chatgpt_prompt = "INSTRUCTIONS:\n\n" + prompt + "\n\nINFORMATION TO ASSESS:\n\n" + section_text + "\n\nDO NOT USE ATTACHED PAGES."
+        chatgpt_response = call_chatgpt(chatgpt_prompt, api_key, model)
+        return f"{section_header}:\n" + chatgpt_response
