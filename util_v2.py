@@ -384,7 +384,7 @@ def clean_section_text(api_key, model, section_text):
     Returns:
     - string: The section text cleansed
     """
-    chatgpt_prompt = "If the text talks about seeing an attached page, return N/A. If there is no text below, return N/A. Otherwise leave the text as is:\n\n" + section_text
+    chatgpt_prompt = "If there is no text below, return N/A. If the text talks about seeing an attached page, return N/A. Otherwise leave the text as is:\n\n" + section_text
     chatgpt_response = call_chatgpt(chatgpt_prompt, api_key, model)
     return chatgpt_response
 
