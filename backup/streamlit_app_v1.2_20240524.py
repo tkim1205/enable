@@ -266,7 +266,7 @@ def main():
                 combine_sections_raw = combine_sections.replace('**', '')
 
                 # [Display Tabs to show Formatted or Raw text]
-                tab1, tab2, tab3 = st.tabs(["Formatted", "Raw", "Prompts"])
+                tab1, tab2, tab3 = st.tabs(["Formatted", "Raw", "Processed Prompts"])
                 
                 # Formatted Text
                 with tab1:                
