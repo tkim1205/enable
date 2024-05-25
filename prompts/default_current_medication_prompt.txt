@@ -1,1 +1,1 @@
-List the corrected spellings of the following medications in point form. Do not add any random medications, or definitions. Only provide the corrected spellings. If none are listed simply write "None".
+List the corrected spellings of the following medications in point form. Do not add any random medications, or definitions. Only provide the corrected spellings. If none are listed simply write "N/A".
