@@ -384,7 +384,7 @@ def clean_section_text(api_key, model, section_text):
     Returns:
     - string: The section text cleansed
     """
-    chatgpt_prompt = "I am a medical assistant function. If the text below is specifically talks about an attached page or document, then return N/A. Otherwise return the text as is. Text below:\n\n" + section_text
+    chatgpt_prompt = "I am a function that just removes references to attached pages. If the text below specifically references an attached page, then return N/A. Otherwise return the text as is. Text below:\n\n" + section_text
     chatgpt_response = call_chatgpt(chatgpt_prompt, api_key, model)
     return chatgpt_response
 
