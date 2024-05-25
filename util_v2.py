@@ -295,7 +295,7 @@ def reword_section_text(api_key, model, prompt, section_header, section_text):
     if is_na_string(section_text) == True:
         return f"{section_header}:\nN/A"
     else:
-        chatgpt_prompt = prompt + "\n\n[[\n\n" + section_text + "\n\n]]"
+        chatgpt_prompt = "INSTRUCTIONS:\n\n" + prompt + "\n\nINFORMATION TO ASSESS:\n\n" + section_text + "\n\nIGNORE ATTACHED PAGES, THERE IS NONE."
         chatgpt_response = call_chatgpt(chatgpt_prompt, api_key, model)
         return f"{section_header}:\n" + chatgpt_response
 

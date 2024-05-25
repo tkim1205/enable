@@ -1,3 +1,1 @@
-Act like a medical doctor updating a patients file for allergies. List the allergies without any descriptions or additional information, in point form.
-
-Use only the information given below between the double square brackets [[given information]].
+Act like a medical doctor updating a patients file for allergies. List the allergies without any descriptions or additional information, in point form. 

@@ -301,44 +301,44 @@ def main():
                     if util_v2.is_na_string(raw_questionaire_txt) == False:
                         st.write("**Questionaire**")
                         with st.container(border=True):
-                            st.markdown(questionaire_prompt + "\n\n[[\n\n" + raw_questionaire_txt + "\n\n]]")
+                            st.markdown("INSTRUCTIONS:\n\n" + questionaire_prompt + "\n\nINFORMATION TO ASSESS:\n\n" + raw_questionaire_txt)
 
                     if util_v2.is_na_string(raw_icbc_txt) == False:
                         st.write("**ICBC**")
                         with st.container(border=True):
-                            st.markdown(icbc_prompt + "\n\n[[\n\n" + raw_icbc_txt + "\n\n]]")
+                            st.markdown("INSTRUCTIONS:\n\n" + icbc_prompt + "\n\nINFORMATION TO ASSESS:\n\n" + raw_icbc_txt)
 
                     st.write("**Summary**")
                     with st.container(border=True):
-                        st.markdown(summary_prompt + "\n\n[[\n\n" + summary_txt + "\n\n]]")
+                        st.markdown("INSTRUCTIONS:\n\n" + summary_prompt + "\n\nINFORMATION TO ASSESS:\n\n" + summary_txt)
 
                     st.write("**Past Medical**")
                     with st.container(border=True):
-                        st.markdown(past_medical_prompt + "\n\n[[\n\n" + past_medical_txt + "\n\n]]")
+                        st.markdown("INSTRUCTIONS:\n\n" + past_medical_prompt + "\n\nINFORMATION TO ASSESS:\n\n" + past_medical_txt)
 
                     st.write("**Surgical History**")
                     with st.container(border=True):
-                        st.markdown(surgical_history_prompt + "\n\n[[\n\n" + surgical_history_txt + "\n\n]]")
+                        st.markdown("INSTRUCTIONS:\n\n" + surgical_history_prompt + "\n\nINFORMATION TO ASSESS:\n\n" + surgical_history_txt)
 
                     st.write("**Current Medication**")
                     with st.container(border=True):
-                        st.markdown(current_medication_prompt + "\n\n[[\n\n" + current_meds_txt + "\n\n]]")
+                        st.markdown("INSTRUCTIONS:\n\n" + current_medication_prompt + "\n\nINFORMATION TO ASSESS:\n\n" + current_meds_txt)
 
                     st.write("**Allergies**")
                     with st.container(border=True):
-                        st.markdown(allergies_prompt + "\n\n[[\n\n" + allergies_txt + "\n\n]]")
+                        st.markdown("INSTRUCTIONS:\n\n" + allergies_prompt + "\n\nINFORMATION TO ASSESS:\n\n" + allergies_txt)
 
                     st.write("**Family History**")
                     with st.container(border=True):
-                        st.markdown(family_history_prompt + "\n\n[[\n\n" + fam_history_txt + "\n\n]]")
+                        st.markdown("INSTRUCTIONS:\n\n" + family_history_prompt + "\n\nINFORMATION TO ASSESS:\n\n" + fam_history_txt)
 
                     st.write("**Social History**")
                     with st.container(border=True):
-                        st.markdown(social_history_prompt + "\n\n[[\n\n" + soc_history_txt + "\n\n]]")
+                        st.markdown("INSTRUCTIONS:\n\n" + social_history_prompt + "\n\nINFORMATION TO ASSESS:\n\n" + soc_history_txt)
 
                     st.write("**Functional History**")
                     with st.container(border=True):
-                        st.markdown(functional_history_prompt + "\n\n[[\n\n" + func_history_txt + "\n\n]]")
+                        st.markdown("INSTRUCTIONS:\n\n" + functional_history_prompt + "\n\nINFORMATION TO ASSESS:\n\n" + func_history_txt)
 
                 # Debug
                 with tab4:

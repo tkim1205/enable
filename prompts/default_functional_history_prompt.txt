@@ -1,3 +1,1 @@
 Act like a medical doctor updating a patients file for functional history. Reword this to read more fluidly. Keep it medically professional and in sentence form only.
-
-Use only the information given below between the double square brackets [[given information]].
