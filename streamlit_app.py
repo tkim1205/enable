@@ -197,28 +197,23 @@ def main():
                     original_txt += '**Summary**:\n' + summary_txt
                     
                     # [Past Medical]
-                    clean_past_medical_txt = util_v2.clean_section_text(st.secrets["api_key"], model, past_medical_txt)
-                    new_past_medical_txt = util_v2.reword_section_text(st.secrets["api_key"], model, past_medical_prompt, '**Past Medical**', clean_past_medical_txt)
+                    new_past_medical_txt = util_v2.reword_section_text(st.secrets["api_key"], model, past_medical_prompt, '**Past Medical**', past_medical_txt)
                     original_txt += '\n\n**Past Medical**:\n' + past_medical_txt
                     
                     # [Surgical History]
-                    clean_surgical_history_txt = util_v2.clean_section_text(st.secrets["api_key"], model, surgical_history_txt)
-                    new_surgical_history_txt = util_v2.reword_section_text(st.secrets["api_key"], model, surgical_history_prompt, '**Surgical History**', clean_surgical_history_txt)
+                    new_surgical_history_txt = util_v2.reword_section_text(st.secrets["api_key"], model, surgical_history_prompt, '**Surgical History**', surgical_history_txt)
                     original_txt += '\n\n**Surgical History**:\n' + surgical_history_txt
                     
                     # [Current Medication]
-                    clean_current_meds_txt = util_v2.clean_section_text(st.secrets["api_key"], model, current_meds_txt)
-                    new_current_meds_txt = util_v2.reword_section_text(st.secrets["api_key"], model, current_medication_prompt, '**Current Medication**', clean_current_meds_txt)
+                    new_current_meds_txt = util_v2.reword_section_text(st.secrets["api_key"], model, current_medication_prompt, '**Current Medication**', current_meds_txt)
                     original_txt += '\n\n**Current Medication**:\n' + current_meds_txt
 
                     # [Allergies]
-                    clean_allergies_txt = util_v2.clean_section_text(st.secrets["api_key"], model, allergies_txt)
-                    new_allergies_txt = util_v2.reword_section_text(st.secrets["api_key"], model, allergies_prompt, '**Allergies**', clean_allergies_txt)
+                    new_allergies_txt = util_v2.reword_section_text(st.secrets["api_key"], model, allergies_prompt, '**Allergies**', allergies_txt)
                     original_txt += '\n\n**Allergies**:\n' + allergies_txt
 
                     # [Family History]
-                    clean_fam_history_txt = util_v2.clean_section_text(st.secrets["api_key"], model, fam_history_txt)
-                    new_fam_history_txt = util_v2.reword_section_text(st.secrets["api_key"], model, family_history_prompt, '**Family History**', clean_fam_history_txt)
+                    new_fam_history_txt = util_v2.reword_section_text(st.secrets["api_key"], model, family_history_prompt, '**Family History**', fam_history_txt)
                     original_txt += '\n\n**Family History**:\n' + fam_history_txt
                     
 
@@ -319,23 +314,23 @@ def main():
 
                     st.write("**Past Medical**")
                     with st.container(border=True):
-                        st.markdown("INSTRUCTIONS:\n\n" + past_medical_prompt + "\n\nGIVEN INFORMATION:\n\n" + clean_past_medical_txt)
+                        st.markdown("INSTRUCTIONS:\n\n" + past_medical_prompt + "\n\nGIVEN INFORMATION:\n\n" + past_medical_txt)
 
                     st.write("**Surgical History**")
                     with st.container(border=True):
-                        st.markdown("INSTRUCTIONS:\n\n" + surgical_history_prompt + "\n\nGIVEN INFORMATION:\n\n" + clean_surgical_history_txt)
+                        st.markdown("INSTRUCTIONS:\n\n" + surgical_history_prompt + "\n\nGIVEN INFORMATION:\n\n" + surgical_history_txt)
 
                     st.write("**Current Medication**")
                     with st.container(border=True):
-                        st.markdown("INSTRUCTIONS:\n\n" + current_medication_prompt + "\n\nGIVEN INFORMATION:\n\n" + clean_current_meds_txt)
+                        st.markdown("INSTRUCTIONS:\n\n" + current_medication_prompt + "\n\nGIVEN INFORMATION:\n\n" + current_meds_txt)
 
                     st.write("**Allergies**")
                     with st.container(border=True):
-                        st.markdown("INSTRUCTIONS:\n\n" + allergies_prompt + "\n\nGIVEN INFORMATION:\n\n" + clean_allergies_txt)
+                        st.markdown("INSTRUCTIONS:\n\n" + allergies_prompt + "\n\nGIVEN INFORMATION:\n\n" + allergies_txt)
 
                     st.write("**Family History**")
                     with st.container(border=True):
-                        st.markdown("INSTRUCTIONS:\n\n" + family_history_prompt + "\n\nGIVEN INFORMATION:\n\n" + clean_fam_history_txt)
+                        st.markdown("INSTRUCTIONS:\n\n" + family_history_prompt + "\n\nGIVEN INFORMATION:\n\n" + fam_history_txt)
 
                     st.write("**Social History**")
                     with st.container(border=True):
