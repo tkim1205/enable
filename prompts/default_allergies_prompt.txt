@@ -1,1 +1,3 @@
-Act like a medical doctor updating a patients file for allergies. List the allergies without any descriptions or additional information.
+Act like a medical doctor updating a patients file for allergies. List the allergies without any descriptions or additional information, in point form.
+
+Use only the information given below, do not add any information. If the below refers to attached pages, ignore as there are no attached pages.
