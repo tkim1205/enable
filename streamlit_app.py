@@ -266,8 +266,9 @@ def main():
                 combine_sections_raw = combine_sections.replace('**', '')
 
                 # [Display Tabs to show Formatted or Raw text]
-                tab1, tab2 = st.tabs(["Formatted", "Raw"])
+                tab1, tab2, tab3 = st.tabs(["Formatted", "Raw", "Prompts"])
                 
+                # Formatted Text
                 with tab1:                
                     col1, col2 = st.columns(2)
 
@@ -281,6 +282,7 @@ def main():
                         with st.container(border=True):
                             st.markdown(combine_sections_format)
 
+                # Raw Text
                 with tab2:  
                     col1, col2 = st.columns(2)             
 
@@ -293,6 +295,50 @@ def main():
                         st.write("**Rewordified Text (Raw)**")
                         with st.container(border=True):
                             st.code(combine_sections_raw, language=None)
+                        
+                # Prompts text sent
+                with tab3:
+                    if util_v2.is_na_string(raw_questionaire_txt) == False:
+                        st.write("**Questionaire**")
+                        with st.container(border=True):
+                            st.markdown(questionaire_prompt + ": " + raw_questionaire_txt)
+
+                    if util_v2.is_na_string(raw_icbc_txt) == False:
+                        st.write("**ICBC**")
+                        with st.container(border=True):
+                            st.markdown(icbc_prompt + ": " + raw_icbc_txt)
+
+                    st.write("**Summary**")
+                    with st.container(border=True):
+                        st.markdown(summary_prompt + ": " + summary_txt
+
+                    st.write("**Past Medical**")
+                    with st.container(border=True):
+                        st.markdown(past_medical_prompt + ": " + past_medical_txt
+
+                    st.write("**Surgical History**")
+                    with st.container(border=True):
+                        st.markdown(surgical_history_prompt + ": " + surgical_history_txt
+
+                    st.write("**Current Medication**")
+                    with st.container(border=True):
+                        st.markdown(current_medication_prompt + ": " + current_meds_txt
+
+                    st.write("**Allergies**")
+                    with st.container(border=True):
+                        st.markdown(allergies_prompt + ": " + allergies_txt
+
+                    st.write("**Family History**")
+                    with st.container(border=True):
+                        st.markdown(family_history_prompt + ": " + fam_history_txt
+
+                    st.write("**Social History**")
+                    with st.container(border=True):
+                        st.markdown(social_history_prompt + ": " + soc_history_txt
+
+                    st.write("**Functional History**")
+                    with st.container(border=True):
+                        st.markdown(functional_history_prompt + ": " + func_history_txt                    
 
             elif pdf_file is None:
                 st.write("Please choose a valid PDF file")
