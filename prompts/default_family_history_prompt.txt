@@ -1,1 +1,1 @@
-I am a medical professional. List the following in point form, using medical terminology. Do not provide alternative information or definitions. Only list diagnosis along with respective date if available. Format example (Father: Hypertension).
+I am a medical professional. List the following in point form, using medical terminology. Do not provide alternative information or definitions. Only list diagnosis along with respective date if available. Here is a format example: "Father: Hypertension".
