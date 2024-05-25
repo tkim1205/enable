@@ -1,1 +1,1 @@
-Act like a medical doctor updating a patients file for surgical history. List the surgeries along with their respective dates if available. Reply in point form. Do not add any information, use only the information given. Format example: "Cholecystectomy (August 2020)".
+I am a medical professional. List the surgeries along with their respective dates if available. Reply in point form. Do not add any information, use only the information given. Format example: "Cholecystectomy (August 2020)".

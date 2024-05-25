@@ -1,1 +1,1 @@
-Act like a medical doctor updating a patients file for allergies. List the allergies without any descriptions or additional information, in point form. 
+I am a medical professional. List the allergies without any descriptions or additional information, in point form. 

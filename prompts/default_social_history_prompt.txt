@@ -1,4 +1,4 @@
-Act like a medical doctor updating a patients file for social history. 
+I am a medical professional.
 
 Reword this in the following format, keeping it medically professional in one paragraph. Mention who patient lives with but do use any names, only the relationship to the patient.:
 
