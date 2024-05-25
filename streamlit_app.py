@@ -223,21 +223,20 @@ def main():
                     
 
                     # [Social History]
-                    clean_soc_history_txt = util_v2.clean_section_text(st.secrets["api_key"], model, soc_history_txt)
                     original_txt += '\n\n**Social History**:\n' + soc_history_txt
 
                     # Remove PII
                     if len(occupation_txt) > 0 and util_v2.contains_pii(occupation_txt) == False:
-                        clean_soc_history_txt = clean_soc_history_txt.replace(occupation_txt, "<occupation>")
+                        soc_history_txt = soc_history_txt.replace(occupation_txt, "<occupation>")
                     if len(employer_txt) > 0 and util_v2.contains_pii(employer_txt) == False:
-                        clean_soc_history_txt = clean_soc_history_txt.replace(employer_txt, "<employer>")
+                        soc_history_txt = soc_history_txt.replace(employer_txt, "<employer>")
                     if len(live_with_people_txt) > 0 and util_v2.contains_pii(live_with_people_txt) == False:
-                        clean_soc_history_txt = clean_soc_history_txt.replace(live_with_people_txt, "<live_with_people>")
+                        soc_history_txt = soc_history_txt.replace(live_with_people_txt, "<live_with_people>")
                     if len(name_txt) > 0:
-                        clean_soc_history_txt = clean_soc_history_txt.replace(name_txt, "<name>")
+                        soc_history_txt = soc_history_txt.replace(name_txt, "<name>")
 
                     # Reword
-                    new_soc_history_txt = util_v2.reword_section_text(st.secrets["api_key"], model, social_history_prompt, '**Social History**', clean_soc_history_txt)
+                    new_soc_history_txt = util_v2.reword_section_text(st.secrets["api_key"], model, social_history_prompt, '**Social History**', soc_history_txt)
                     
                     # Readd PII
                     if len(occupation_txt) > 0 and util_v2.contains_pii(occupation_txt) == False:
@@ -254,8 +253,7 @@ def main():
                         new_func_history_txt = '**Functional History**:\nN/A'
                         original_txt += '\n\n**Functional History**:\nN/A'
                     else:
-                        clean_func_history_txt = util_v2.clean_section_text(st.secrets["api_key"], model, func_history_txt)
-                        new_func_history_txt = util_v2.reword_section_text(st.secrets["api_key"], model, functional_history_prompt, '**Functional History**', clean_func_history_txt)
+                        new_func_history_txt = util_v2.reword_section_text(st.secrets["api_key"], model, functional_history_prompt, '**Functional History**', func_history_txt)
                         original_txt += '\n\n**Functional History**:\n' + func_history_txt
                     
                     # [Combine Sections]
@@ -341,11 +339,11 @@ def main():
 
                     st.write("**Social History**")
                     with st.container(border=True):
-                        st.markdown("INSTRUCTIONS:\n\n" + social_history_prompt + "\n\nGIVEN INFORMATION:\n\n" + clean_soc_history_txt)
+                        st.markdown("INSTRUCTIONS:\n\n" + social_history_prompt + "\n\nGIVEN INFORMATION:\n\n" + soc_history_txt)
 
                     st.write("**Functional History**")
                     with st.container(border=True):
-                        st.markdown("INSTRUCTIONS:\n\n" + functional_history_prompt + "\n\nGIVEN INFORMATION:\n\n" + clean_func_history_txt)
+                        st.markdown("INSTRUCTIONS:\n\n" + functional_history_prompt + "\n\nGIVEN INFORMATION:\n\n" + func_history_txt)
 
                 # Debug
                 with tab4:
