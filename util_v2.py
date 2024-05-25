@@ -372,19 +372,19 @@ def call_chatgpt(prompt, api_key, model):
     return response_message
 
 
-def cleanup_section_text(api_key, model, section_text):
+def pre_clean_section_text(api_key, model, section_text):
     """
-    Reword section text using ChatGPT
+    Pre-clean section text using ChatGPT
 
     Parameters:
-    - prompt (str): The ChatGPT prompt.
-    - section_header (str): Section Header Text
+    - api_key
+    - model
     - section_text (str): Section Text to be reworded
 
     Returns:
-    - string: The reworded output from ChatPGT
+    - string: The section text cleansed
     """
-    chatgpt_prompt = "Clean up the text below. If the text is blank, null, none, or if it just references an attached or additional information elsewhere, just reply N/A:\n\n" + section_text
+    chatgpt_prompt = "Clean up the text below. If the text is blank, null, none, just reply N/A. If the text just references an attached or additional information elsewhere, just reply N/A:\n\n" + section_text
     chatgpt_response = call_chatgpt(chatgpt_prompt, api_key, model)
     return chatgpt_response
 
@@ -394,6 +394,8 @@ def reword_section_text(api_key, model, prompt, section_header, section_text):
     Reword section text using ChatGPT
 
     Parameters:
+    - api_key
+    - model
     - prompt (str): The ChatGPT prompt.
     - section_header (str): Section Header Text
     - section_text (str): Section Text to be reworded

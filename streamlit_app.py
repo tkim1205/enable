@@ -202,37 +202,42 @@ def main():
                     original_txt += '\n\n**Past Medical**:\n' + past_medical_txt
                     
                     # [Surgical History]
-                    new_surgical_history_txt = util_v2.reword_section_text(st.secrets["api_key"], model, surgical_history_prompt, '**Surgical History**', surgical_history_txt)
+                    clean_surgical_history_txt = util_v2.cleanup_section_text(st.secrets["api_key"], model, surgical_history_txt)
+                    new_surgical_history_txt = util_v2.reword_section_text(st.secrets["api_key"], model, surgical_history_prompt, '**Surgical History**', clean_surgical_history_txt)
                     original_txt += '\n\n**Surgical History**:\n' + surgical_history_txt
                     
                     # [Current Medication]
-                    new_current_meds_txt = util_v2.reword_section_text(st.secrets["api_key"], model, current_medication_prompt, '**Current Medication**', current_meds_txt)
+                    clean_current_meds_txt = util_v2.cleanup_section_text(st.secrets["api_key"], model, current_meds_txt)
+                    new_current_meds_txt = util_v2.reword_section_text(st.secrets["api_key"], model, current_medication_prompt, '**Current Medication**', clean_current_meds_txt)
                     original_txt += '\n\n**Current Medication**:\n' + current_meds_txt
 
                     # [Allergies]
-                    new_allergies_txt = util_v2.reword_section_text(st.secrets["api_key"], model, allergies_prompt, '**Allergies**', allergies_txt)
+                    clean_allergies_txt = util_v2.cleanup_section_text(st.secrets["api_key"], model, allergies_txt)
+                    new_allergies_txt = util_v2.reword_section_text(st.secrets["api_key"], model, allergies_prompt, '**Allergies**', clean_allergies_txt)
                     original_txt += '\n\n**Allergies**:\n' + allergies_txt
 
                     # [Family History]
-                    new_fam_history_txt = util_v2.reword_section_text(st.secrets["api_key"], model, family_history_prompt, '**Family History**', fam_history_txt)
+                    clean_fam_history_txt = util_v2.cleanup_section_text(st.secrets["api_key"], model, fam_history_txt)
+                    new_fam_history_txt = util_v2.reword_section_text(st.secrets["api_key"], model, family_history_prompt, '**Family History**', clean_fam_history_txt)
                     original_txt += '\n\n**Family History**:\n' + fam_history_txt
                     
 
                     # [Social History]
+                    clean_soc_history_txt = util_v2.cleanup_section_text(st.secrets["api_key"], model, soc_history_txt)
                     original_txt += '\n\n**Social History**:\n' + soc_history_txt
 
                     # Remove PII
                     if len(occupation_txt) > 0 and util_v2.contains_pii(occupation_txt) == False:
-                        soc_history_txt = soc_history_txt.replace(occupation_txt, "<occupation>")
+                        clean_soc_history_txt = clean_soc_history_txt.replace(occupation_txt, "<occupation>")
                     if len(employer_txt) > 0 and util_v2.contains_pii(employer_txt) == False:
-                        soc_history_txt = soc_history_txt.replace(employer_txt, "<employer>")
+                        clean_soc_history_txt = clean_soc_history_txt.replace(employer_txt, "<employer>")
                     if len(live_with_people_txt) > 0 and util_v2.contains_pii(live_with_people_txt) == False:
-                        soc_history_txt = soc_history_txt.replace(live_with_people_txt, "<live_with_people>")
+                        clean_soc_history_txt = clean_soc_history_txt.replace(live_with_people_txt, "<live_with_people>")
                     if len(name_txt) > 0:
-                        soc_history_txt = soc_history_txt.replace(name_txt, "<name>")
+                        clean_soc_history_txt = clean_soc_history_txt.replace(name_txt, "<name>")
 
                     # Reword
-                    new_soc_history_txt = util_v2.reword_section_text(st.secrets["api_key"], model, social_history_prompt, '**Social History**', soc_history_txt)
+                    new_soc_history_txt = util_v2.reword_section_text(st.secrets["api_key"], model, social_history_prompt, '**Social History**', clean_soc_history_txt)
                     
                     # Readd PII
                     if len(occupation_txt) > 0 and util_v2.contains_pii(occupation_txt) == False:
@@ -249,7 +254,8 @@ def main():
                         new_func_history_txt = '**Functional History**:\nN/A'
                         original_txt += '\n\n**Functional History**:\nN/A'
                     else:
-                        new_func_history_txt = util_v2.reword_section_text(st.secrets["api_key"], model, functional_history_prompt, '**Functional History**', func_history_txt)
+                        clean_func_history_txt = util_v2.cleanup_section_text(st.secrets["api_key"], model, func_history_txt)
+                        new_func_history_txt = util_v2.reword_section_text(st.secrets["api_key"], model, functional_history_prompt, '**Functional History**', clean_func_history_txt)
                         original_txt += '\n\n**Functional History**:\n' + func_history_txt
                     
                     # [Combine Sections]
@@ -319,27 +325,27 @@ def main():
 
                     st.write("**Surgical History**")
                     with st.container(border=True):
-                        st.markdown("INSTRUCTIONS:\n\n" + surgical_history_prompt + "\n\nGIVEN INFORMATION:\n\n" + surgical_history_txt)
+                        st.markdown("INSTRUCTIONS:\n\n" + surgical_history_prompt + "\n\nGIVEN INFORMATION:\n\n" + clean_surgical_history_txt)
 
                     st.write("**Current Medication**")
                     with st.container(border=True):
-                        st.markdown("INSTRUCTIONS:\n\n" + current_medication_prompt + "\n\nGIVEN INFORMATION:\n\n" + current_meds_txt)
+                        st.markdown("INSTRUCTIONS:\n\n" + current_medication_prompt + "\n\nGIVEN INFORMATION:\n\n" + clean_current_meds_txt)
 
                     st.write("**Allergies**")
                     with st.container(border=True):
-                        st.markdown("INSTRUCTIONS:\n\n" + allergies_prompt + "\n\nGIVEN INFORMATION:\n\n" + allergies_txt)
+                        st.markdown("INSTRUCTIONS:\n\n" + allergies_prompt + "\n\nGIVEN INFORMATION:\n\n" + clean_allergies_txt)
 
                     st.write("**Family History**")
                     with st.container(border=True):
-                        st.markdown("INSTRUCTIONS:\n\n" + family_history_prompt + "\n\nGIVEN INFORMATION:\n\n" + fam_history_txt)
+                        st.markdown("INSTRUCTIONS:\n\n" + family_history_prompt + "\n\nGIVEN INFORMATION:\n\n" + clean_fam_history_txt)
 
                     st.write("**Social History**")
                     with st.container(border=True):
-                        st.markdown("INSTRUCTIONS:\n\n" + social_history_prompt + "\n\nGIVEN INFORMATION:\n\n" + soc_history_txt)
+                        st.markdown("INSTRUCTIONS:\n\n" + social_history_prompt + "\n\nGIVEN INFORMATION:\n\n" + clean_soc_history_txt)
 
                     st.write("**Functional History**")
                     with st.container(border=True):
-                        st.markdown("INSTRUCTIONS:\n\n" + functional_history_prompt + "\n\nGIVEN INFORMATION:\n\n" + func_history_txt)
+                        st.markdown("INSTRUCTIONS:\n\n" + functional_history_prompt + "\n\nGIVEN INFORMATION:\n\n" + clean_func_history_txt)
 
                 # Debug
                 with tab4:
