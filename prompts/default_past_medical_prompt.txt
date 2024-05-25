@@ -1,1 +1,1 @@
-Reword the following in point form, using medical terminology. Do not provide alternative information or definitions. Only list diagnosis along with respective date if available. (eg. Hypertension (July 2020)).
+Using medical terminology, reword the text below. Do not provide alternative information or definitions. Only list diagnosis along with respective date if available. (eg. Hypertension (July 2020)).
