@@ -197,33 +197,33 @@ def main():
                     original_txt += '**Summary**:\n' + summary_txt
                     
                     # [Past Medical]
-                    clean_past_medical_txt = util_v2.cleanup_section_text(st.secrets["api_key"], model, past_medical_txt)
+                    clean_past_medical_txt = util_v2.clean_section_text(st.secrets["api_key"], model, past_medical_txt)
                     new_past_medical_txt = util_v2.reword_section_text(st.secrets["api_key"], model, past_medical_prompt, '**Past Medical**', clean_past_medical_txt)
                     original_txt += '\n\n**Past Medical**:\n' + past_medical_txt
                     
                     # [Surgical History]
-                    clean_surgical_history_txt = util_v2.cleanup_section_text(st.secrets["api_key"], model, surgical_history_txt)
+                    clean_surgical_history_txt = util_v2.clean_section_text(st.secrets["api_key"], model, surgical_history_txt)
                     new_surgical_history_txt = util_v2.reword_section_text(st.secrets["api_key"], model, surgical_history_prompt, '**Surgical History**', clean_surgical_history_txt)
                     original_txt += '\n\n**Surgical History**:\n' + surgical_history_txt
                     
                     # [Current Medication]
-                    clean_current_meds_txt = util_v2.cleanup_section_text(st.secrets["api_key"], model, current_meds_txt)
+                    clean_current_meds_txt = util_v2.clean_section_text(st.secrets["api_key"], model, current_meds_txt)
                     new_current_meds_txt = util_v2.reword_section_text(st.secrets["api_key"], model, current_medication_prompt, '**Current Medication**', clean_current_meds_txt)
                     original_txt += '\n\n**Current Medication**:\n' + current_meds_txt
 
                     # [Allergies]
-                    clean_allergies_txt = util_v2.cleanup_section_text(st.secrets["api_key"], model, allergies_txt)
+                    clean_allergies_txt = util_v2.clean_section_text(st.secrets["api_key"], model, allergies_txt)
                     new_allergies_txt = util_v2.reword_section_text(st.secrets["api_key"], model, allergies_prompt, '**Allergies**', clean_allergies_txt)
                     original_txt += '\n\n**Allergies**:\n' + allergies_txt
 
                     # [Family History]
-                    clean_fam_history_txt = util_v2.cleanup_section_text(st.secrets["api_key"], model, fam_history_txt)
+                    clean_fam_history_txt = util_v2.clean_section_text(st.secrets["api_key"], model, fam_history_txt)
                     new_fam_history_txt = util_v2.reword_section_text(st.secrets["api_key"], model, family_history_prompt, '**Family History**', clean_fam_history_txt)
                     original_txt += '\n\n**Family History**:\n' + fam_history_txt
                     
 
                     # [Social History]
-                    clean_soc_history_txt = util_v2.cleanup_section_text(st.secrets["api_key"], model, soc_history_txt)
+                    clean_soc_history_txt = util_v2.clean_section_text(st.secrets["api_key"], model, soc_history_txt)
                     original_txt += '\n\n**Social History**:\n' + soc_history_txt
 
                     # Remove PII
@@ -254,7 +254,7 @@ def main():
                         new_func_history_txt = '**Functional History**:\nN/A'
                         original_txt += '\n\n**Functional History**:\nN/A'
                     else:
-                        clean_func_history_txt = util_v2.cleanup_section_text(st.secrets["api_key"], model, func_history_txt)
+                        clean_func_history_txt = util_v2.clean_section_text(st.secrets["api_key"], model, func_history_txt)
                         new_func_history_txt = util_v2.reword_section_text(st.secrets["api_key"], model, functional_history_prompt, '**Functional History**', clean_func_history_txt)
                         original_txt += '\n\n**Functional History**:\n' + func_history_txt
                     
