@@ -295,7 +295,7 @@ def reword_section_text(api_key, model, prompt, section_header, section_text):
     if is_na_string(section_text) == True:
         return f"{section_header}:\nN/A"
     else:
-        chatgpt_prompt = prompt + ": " + section_text
+        chatgpt_prompt = prompt + "\n\nText to reword:\n" + section_text
         chatgpt_response = call_chatgpt(chatgpt_prompt, api_key, model)
         return f"{section_header}:\n" + chatgpt_response
 
@@ -343,7 +343,7 @@ def contains_pii(input_string):
 
 def is_na_string(text):
     """
-    Check if a string variable represents 'no', 'na', 'n'
+    Check if a string variable represents 'none', 'no', 'na', 'n'
     after removing non-alphabetic characters.
 
     Parameters:
