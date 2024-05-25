@@ -384,12 +384,9 @@ def cleanup_section_text(api_key, model, section_text):
     Returns:
     - string: The reworded output from ChatPGT
     """
-    if is_na_string(section_text) == True:
-        return f"{section_header}:\nN/A"
-    else:
-        chatgpt_prompt = "Clean up the text below. For references to attached, additional, or other information or pages, just ignore:\n\n" + section_text
-        chatgpt_response = call_chatgpt(chatgpt_prompt, api_key, model)
-        return chatgpt_response
+    chatgpt_prompt = "Clean up the text below. If the text is blank, null, none, or if it just references an attached or additional information elsewhere, just reply N/A:\n\n" + section_text
+    chatgpt_response = call_chatgpt(chatgpt_prompt, api_key, model)
+    return chatgpt_response
 
 
 def reword_section_text(api_key, model, prompt, section_header, section_text):
