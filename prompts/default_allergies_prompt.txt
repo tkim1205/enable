@@ -1,1 +1,1 @@
-I am a medical professional. List the allergies without any descriptions or additional information, in point form. 
+List the allergies without any descriptions or additional information, in point form. 
