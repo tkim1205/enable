@@ -384,7 +384,7 @@ def clean_section_text(api_key, model, section_text):
     Returns:
     - string: The section text cleansed
     """
-    chatgpt_prompt = "I am a medical assistant. If the text below ONLY and specifically references an attached page/document, then return N/A. Otherwise try to correct any spelling mistakes. If you are not sure, return the text as is without any modification:\n\n" + section_text
+    chatgpt_prompt = "I am a medical assistant function. If the text below is about an attachment file, page, or document, then return N/A. Otherwise return the text as is. Text below:\n\n" + section_text
     chatgpt_response = call_chatgpt(chatgpt_prompt, api_key, model)
     return chatgpt_response
 
