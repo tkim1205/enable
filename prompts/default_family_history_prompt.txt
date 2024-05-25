@@ -1,1 +1,3 @@
-Act like a medical doctor updating a patients file for family history. List the following in point form, using medical terminology. Do not provide alternative information or definitions. Only list diagnosis along with respective date if available. Format example: Father: Hypertension
+Act like a medical doctor updating a patients file for family history. List the following in point form, using medical terminology. Do not provide alternative information or definitions. Only list diagnosis along with respective date if available. Format example (Father: Hypertension).
+
+Use only the information given below between the double square brackets [[given information]].
