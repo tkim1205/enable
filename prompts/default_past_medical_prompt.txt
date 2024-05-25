@@ -1,3 +1,3 @@
 Act like a medical doctor updating a patients file for past medical history. Reply in point form. Do not provide alternative information or definitions. Only list diagnosis along with respective date if available. Format example: "Hypertension (July 2020)".
 
-Use only the information given below, do not add any information. If the below refers to attached pages, ignore and do not add any information.
+Use only the information given below, do not add any information. If the below refers to attached pages, ignore as there are no attached pages.
