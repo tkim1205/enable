@@ -372,9 +372,9 @@ def call_chatgpt(prompt, api_key, model):
     return response_message
 
 
-def pre_clean_section_text(api_key, model, section_text):
+def clean_section_text(api_key, model, section_text):
     """
-    Pre-clean section text using ChatGPT
+    Clean section text using ChatGPT
 
     Parameters:
     - api_key
