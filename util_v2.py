@@ -384,7 +384,7 @@ def clean_section_text(api_key, model, section_text):
     Returns:
     - string: The section text cleansed
     """
-    chatgpt_prompt = "If the text below only references an external document, like an attached page, and there is no other information reply N/A. Otherwise leave as is:\n\n" + section_text
+    chatgpt_prompt = "If the text below only specifically references an external document like an attached page, and there is no other information, then reply N/A. Otherwise leave the text as is:\n\n" + section_text
     chatgpt_response = call_chatgpt(chatgpt_prompt, api_key, model)
     return chatgpt_response
 
