@@ -1,1 +1,1 @@
-Reword this in point form and keep it medically professional. Only list the allergies, without any descriptions or additional information.
+Act like a medical doctor updating a patients file for allergies. List the allergies without any descriptions or additional information.

@@ -1,1 +1,1 @@
-List the surgeries along with their respective dates if available, in point form. Use medical terminology. Do not add any random surgeries or other information. If the text is not clear, reply "N/A". Format example: Cholecystectomy (August 2020).
+Act like a medical doctor updating a patients file for surgical history. List the surgeries along with their respective dates if available. Reply in point form. Do not add any random surgeries or other information. If the text is not clear, reply "N/A". Format example: Cholecystectomy (August 2020).

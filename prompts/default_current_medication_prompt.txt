@@ -1,1 +1,1 @@
-List the corrected spellings of the following medications in point form. Do not add any random medications, or definitions. Only provide the corrected spellings. If the text is not clear, reply "N/A".
+Act like a medical doctor updating a patients file for current medication. List the corrected spellings of the following medications in point form. Do not add any random medications, or definitions. Only provide the corrected spellings. If the text is not clear, reply "N/A".
