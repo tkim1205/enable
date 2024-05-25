@@ -1,3 +1,4 @@
-I am a medical professional. List the corrected spellings of the following medications in point form. 
-Only use the specific information given. Do not guess or add any medications. Do not add definitions. 
-Only provide the corrected spellings.
+I am a medical professional. Reply in point form.
+Do not provide alternative information or definitions. 
+Only list medications. Do not add definitions. 
+Correct any spellings.
