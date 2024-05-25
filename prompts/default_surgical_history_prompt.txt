@@ -1,1 +1,1 @@
-I am a medical professional. List the surgeries along with their respective dates if available. Reply in point form. Do not add any information, use only the information given. Here is a format example: "Cholecystectomy (August 2020)".
+I am a medical professional. List the surgeries along with their respective dates if available. Reply in point form. Do not add any information, use only the specific information given. Here is a format example: "Surgery (Month Year)".
