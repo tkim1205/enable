@@ -182,38 +182,38 @@ def main():
                     if util_v2.is_na_string(raw_questionaire_txt) == True:
                         new_questionaire_txt = ''
                     else:
-                        new_questionaire_txt = util_v2.reword_section_text(st.secrets["api_key"], model, questionaire_prompt, '**Questionaire Summary**', raw_questionaire_txt)+'\n\n'
+                        new_questionaire_txt = util_v2.reword_section_text(st.secrets["api_key"], model, 0.7, questionaire_prompt, '**Questionaire Summary**', raw_questionaire_txt)+'\n\n'
                         original_txt += '**Questionaire Summary**:\n' + raw_questionaire_txt +'\n\n'
 
                     # [ICBC]
                     if util_v2.is_na_string(raw_icbc_txt) == True:
                         new_icbc_txt = ''
                     else:
-                        new_icbc_txt = util_v2.reword_section_text(st.secrets["api_key"], model, icbc_prompt, '**ICBC/WBC**', raw_icbc_txt)+'\n\n'
+                        new_icbc_txt = util_v2.reword_section_text(st.secrets["api_key"], model, 0, icbc_prompt, '**ICBC/WBC**', raw_icbc_txt)+'\n\n'
                         original_txt += '**ICBC/WBC**:\n' + raw_icbc_txt +'\n\n'
                     
                     # [Summary]
-                    new_summary_txt = util_v2.reword_section_text(st.secrets["api_key"], model, summary_prompt, '**Summary**', summary_txt)
+                    new_summary_txt = util_v2.reword_section_text(st.secrets["api_key"], model, 0, summary_prompt, '**Summary**', summary_txt)
                     original_txt += '**Summary**:\n' + summary_txt
                     
                     # [Past Medical]
-                    new_past_medical_txt = util_v2.reword_section_text(st.secrets["api_key"], model, past_medical_prompt, '**Past Medical**', past_medical_txt)
+                    new_past_medical_txt = util_v2.reword_section_text(st.secrets["api_key"], model, 0, past_medical_prompt, '**Past Medical**', past_medical_txt)
                     original_txt += '\n\n**Past Medical**:\n' + past_medical_txt
                     
                     # [Surgical History]
-                    new_surgical_history_txt = util_v2.reword_section_text(st.secrets["api_key"], model, surgical_history_prompt, '**Surgical History**', surgical_history_txt)
+                    new_surgical_history_txt = util_v2.reword_section_text(st.secrets["api_key"], model, 0, surgical_history_prompt, '**Surgical History**', surgical_history_txt)
                     original_txt += '\n\n**Surgical History**:\n' + surgical_history_txt
                     
                     # [Current Medication]
-                    new_current_meds_txt = util_v2.reword_section_text(st.secrets["api_key"], model, current_medication_prompt, '**Current Medication**', current_meds_txt)
+                    new_current_meds_txt = util_v2.reword_section_text(st.secrets["api_key"], model, 0, current_medication_prompt, '**Current Medication**', current_meds_txt)
                     original_txt += '\n\n**Current Medication**:\n' + current_meds_txt
 
                     # [Allergies]
-                    new_allergies_txt = util_v2.reword_section_text(st.secrets["api_key"], model, allergies_prompt, '**Allergies**', allergies_txt)
+                    new_allergies_txt = util_v2.reword_section_text(st.secrets["api_key"], model, 0, allergies_prompt, '**Allergies**', allergies_txt)
                     original_txt += '\n\n**Allergies**:\n' + allergies_txt
 
                     # [Family History]
-                    new_fam_history_txt = util_v2.reword_section_text(st.secrets["api_key"], model, family_history_prompt, '**Family History**', fam_history_txt)
+                    new_fam_history_txt = util_v2.reword_section_text(st.secrets["api_key"], model, 0, family_history_prompt, '**Family History**', fam_history_txt)
                     original_txt += '\n\n**Family History**:\n' + fam_history_txt
                     
 
@@ -231,7 +231,7 @@ def main():
                         soc_history_txt = soc_history_txt.replace(name_txt, "<name>")
 
                     # Reword
-                    new_soc_history_txt = util_v2.reword_section_text(st.secrets["api_key"], model, social_history_prompt, '**Social History**', soc_history_txt)
+                    new_soc_history_txt = util_v2.reword_section_text(st.secrets["api_key"], model, 0, social_history_prompt, '**Social History**', soc_history_txt)
                     
                     # Readd PII
                     if len(occupation_txt) > 0 and util_v2.contains_pii(occupation_txt) == False:
@@ -248,7 +248,7 @@ def main():
                         new_func_history_txt = '**Functional History**:\nN/A'
                         original_txt += '\n\n**Functional History**:\nN/A'
                     else:
-                        new_func_history_txt = util_v2.reword_section_text(st.secrets["api_key"], model, functional_history_prompt, '**Functional History**', func_history_txt)
+                        new_func_history_txt = util_v2.reword_section_text(st.secrets["api_key"], model, 0, functional_history_prompt, '**Functional History**', func_history_txt)
                         original_txt += '\n\n**Functional History**:\n' + func_history_txt
                     
                     # [Combine Sections]

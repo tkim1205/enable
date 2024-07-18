@@ -341,7 +341,7 @@ def is_na_string(text):
         return text_alpha.lower() in na_patterns
 
 
-def call_chatgpt(prompt, api_key, model):
+def call_chatgpt(prompt, api_key, model, temperature):
     """
     Call ChatGPT
     
@@ -365,31 +365,13 @@ def call_chatgpt(prompt, api_key, model):
     response = client.chat.completions.create(
         model=model,
         messages=messages,
-        temperature=0
+        temperature=temperature
     )
 
     response_message = response.choices[0].message.content
     return response_message
 
-
-def clean_section_text(api_key, model, section_text):
-    """
-    Clean section text using ChatGPT
-
-    Parameters:
-    - api_key
-    - model
-    - section_text (str): Section Text to be reworded
-
-    Returns:
-    - string: The section text cleansed
-    """
-    chatgpt_prompt = "I am a medical assistant. Try to correct any spelling errors if you can. If you are not sure, leave it as is:\n\n" + section_text
-    chatgpt_response = call_chatgpt(chatgpt_prompt, api_key, model)
-    return chatgpt_response
-
-
-def reword_section_text(api_key, model, prompt, section_header, section_text):
+def reword_section_text(api_key, model, temperature, prompt, section_header, section_text):
     """
     Reword section text using ChatGPT
 
@@ -407,5 +389,5 @@ def reword_section_text(api_key, model, prompt, section_header, section_text):
         return f"{section_header}:\nN/A"
     else:
         chatgpt_prompt = "INSTRUCTIONS:\n\n" + prompt + "\n\nGIVEN INFORMATION:\n\n" + section_text
-        chatgpt_response = call_chatgpt(chatgpt_prompt, api_key, model)
+        chatgpt_response = call_chatgpt(chatgpt_prompt, api_key, model, temperature)
         return f"{section_header}:\n" + chatgpt_response
