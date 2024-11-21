@@ -44,7 +44,7 @@ def main():
         raw_questionaire_txt = st.text_area(
             '**Questionaire: History of Presenting Illness (optional)**',
             'N/A',
-            height=68,
+            height=120,
             disabled=False,
             label_visibility="visible"
         )
@@ -52,7 +52,7 @@ def main():
         raw_icbc_txt = st.text_area(
             '**ICBC/WBC (optional)**',
             'N/A',
-            height=68,
+            height=120,
             disabled=False,
             label_visibility="visible"
         )
@@ -62,7 +62,7 @@ def main():
         questionaire_prompt = st.text_area(
             '**Questionaire Prompt**',
             default_questionaire_prompt,
-            height=68,
+            height=120,
             disabled=False,
             label_visibility="visible"
         )
@@ -70,7 +70,7 @@ def main():
         icbc_prompt = st.text_area(
             '**ICBC/WBC Prompt**',
             default_icbc_prompt,
-            height=68,
+            height=120,
             disabled=False,
             label_visibility="visible"
         )
@@ -78,7 +78,7 @@ def main():
         summary_prompt = st.text_area(
             '**Summary Prompt**',
             default_summary_prompt,
-            height=68,
+            height=120,
             disabled=False,
             label_visibility="visible"
         )
@@ -86,7 +86,7 @@ def main():
         past_medical_prompt = st.text_area(
             '**Past Medical Prompt**',
             default_past_medical_prompt,
-            height=68,
+            height=120,
             disabled=False,
             label_visibility="visible"
         )
@@ -94,7 +94,7 @@ def main():
         surgical_history_prompt = st.text_area(
             '**Surgical History Prompt**',
             default_surgical_history_prompt,
-            height=68,
+            height=120,
             disabled=False,
             label_visibility="visible"
         )
@@ -102,7 +102,7 @@ def main():
         current_medication_prompt = st.text_area(
             '**Current Medication Prompt**',
             default_current_medication_prompt,
-            height=68,
+            height=120,
             disabled=False,
             label_visibility="visible"
         )
@@ -110,7 +110,7 @@ def main():
         allergies_prompt = st.text_area(
             '**Allergies Prompt**',
             default_allergies_prompt,
-            height=68,
+            height=120,
             disabled=False,
             label_visibility="visible"
         )
@@ -118,7 +118,7 @@ def main():
         family_history_prompt = st.text_area(
             '**Family History Prompt**',
             default_family_history_prompt,
-            height=68,
+            height=120,
             disabled=False,
             label_visibility="visible"
         )
@@ -126,7 +126,7 @@ def main():
         social_history_prompt = st.text_area(
             '**Social History Prompt**',
             default_social_history_prompt,
-            height=68,
+            height=120,
             disabled=False,
             label_visibility="visible"
         )
@@ -134,7 +134,7 @@ def main():
         functional_history_prompt = st.text_area(
             '**Functional History Prompt**',
             default_functional_history_prompt,
-            height=68,
+            height=120,
             disabled=False,
             label_visibility="visible"
         )
