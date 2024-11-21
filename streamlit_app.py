@@ -86,7 +86,7 @@ def main():
         past_medical_prompt = st.text_area(
             '**Past Medical Prompt**',
             default_past_medical_prompt,
-            height=20,
+            height=120,
             disabled=False,
             label_visibility="visible"
         )
@@ -94,7 +94,7 @@ def main():
         surgical_history_prompt = st.text_area(
             '**Surgical History Prompt**',
             default_surgical_history_prompt,
-            height=20,
+            height=120,
             disabled=False,
             label_visibility="visible"
         )
@@ -102,7 +102,7 @@ def main():
         current_medication_prompt = st.text_area(
             '**Current Medication Prompt**',
             default_current_medication_prompt,
-            height=20,
+            height=120,
             disabled=False,
             label_visibility="visible"
         )
@@ -110,7 +110,7 @@ def main():
         allergies_prompt = st.text_area(
             '**Allergies Prompt**',
             default_allergies_prompt,
-            height=20,
+            height=120,
             disabled=False,
             label_visibility="visible"
         )
@@ -118,7 +118,7 @@ def main():
         family_history_prompt = st.text_area(
             '**Family History Prompt**',
             default_family_history_prompt,
-            height=20,
+            height=120,
             disabled=False,
             label_visibility="visible"
         )
@@ -126,7 +126,7 @@ def main():
         social_history_prompt = st.text_area(
             '**Social History Prompt**',
             default_social_history_prompt,
-            height=20,
+            height=120,
             disabled=False,
             label_visibility="visible"
         )
@@ -134,7 +134,7 @@ def main():
         functional_history_prompt = st.text_area(
             '**Functional History Prompt**',
             default_functional_history_prompt,
-            height=20,
+            height=120,
             disabled=False,
             label_visibility="visible"
         )
